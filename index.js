@@ -2,5 +2,8 @@
 'use strict';
 
 module.exports = {
-  name: 'webrtc-devices'
+  name: 'webrtc-devices',
+  isDevelopingAddon: function () {
+      return true;
+  }
 };

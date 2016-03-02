@@ -1,6 +1,21 @@
-# Webrtc-devices
+#### PSA
 
-This README outlines the details of collaborating on this Ember addon.
+This addon is still under development and not ready for use.
+
+TODO:
+* [ ] bring in adapter.js
+* [ ] create dummy application
+* [ ] create unit tests
+* [ ] create integration tests
+
+# webrtc-devices
+
+This addon is designed to provide you with two things:
+
+1. A mixin (probably useful on a service) for enumerating devices, and setting
+up all the basic stuff.
+
+2. A component for selecting those devices
 
 ## Installation
 

@@ -1,0 +1,144 @@
+<div class="options">
+    {{#if webrtc.canListDevices}}
+        {{#if (and webrtc.cameraList.length video)}}
+            <div class="entry-row">
+                <div class="entry-label">
+                    <label for="camera-select">
+                        <span class="sr-only">
+                            {{t "chat.video.videoSource"}}
+                        </span>
+                        <i class="pc-moon pc-chat"></i>
+                    </label>
+                </div>
+                <div class="entry-values">
+                    {{#if canShareVideo}}
+                        {{#x-select id="camera-select"
+                           value=selectedCamera
+                           action=(action (mut selectedCamera))
+                           class="form-control"}}
+                            {{#each webrtc.cameraList as |camera|}}
+                                {{#x-option value=camera}}{{camera.label}}{{/x-option}}
+                            {{/each}}
+                        {{/x-select}}
+                    {{else}}
+                        <span>{{t "chat.video.noCameraDetected"}}</span>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if advancedOptions}}
+                <div class="entry-row">
+                    <div class="entry-label">
+                        <label for="filter-select">
+                            <i class="pc pc-picture"></i>
+                        </label>
+                    </div>
+                    <div class="entry-values">
+                        {{#x-select
+                           id="filter-select"
+                           value=selectedFilter
+                           action=(action (mut selectedFilter))
+                           class="form-control"}}
+                            {{#each advancedOptions as |option|}}
+                                {{#x-option value=option}}{{option}}{{/x-option}}
+                            {{/each}}
+                        {{/x-select}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+        {{#if (and webrtc.microphoneList.length audio)}}
+            <div class="entry-row">
+                <div class="entry-label">
+                    <label for="microphone-select">
+                        <span class="sr-only">
+                            {{t "chat.video.audioSource"}}
+                        </span>
+                        <i class="pc-moon pc-microphone"></i>
+                    </label>
+                </div>
+                <div class="entry-values">
+                    {{#if canShareAudio}}
+                        {{#x-select
+                           id="microphone-select"
+                           value=selectedMicrophone
+                           action=(action (mut selectedMicrophone))
+                           class="form-control"}}
+                            {{#each webrtc.microphoneList as |microphone|}}
+                                {{#x-option value=microphone}}{{microphone.label}}{{/x-option}}
+                            {{/each}}
+                        {{/x-select}}
+                    {{else}}
+                        <span>{{t "chat.video.noMicrophoneDetected"}}</span>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+        {{#if (and webrtc.outputDeviceList.length audio)}}
+            <div class="entry-row">
+                <div class="entry-label">
+                    <label for="outputDevice-select">
+                        <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "chat.video.audioDestinationTooltip"}}">
+                            <span class="sr-only">
+                                {{t "chat.video.audioDestination"}}
+                            </span>
+                            <i class="pc pc-speakers"></i>
+                        </a>
+                    </label>
+                    <audio class="hide preview-audio">
+                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.mp3" type="audio/mpeg"/>
+                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.aac" type="audio/mp4"/>
+                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.ogg" type="audio/ogg"/>
+                    </audio>
+                </div>
+                <div class="entry-values">
+                    {{#x-select
+                       id="speakers-select"
+                       value=_selectedOutputDevice
+                       action=(action (mut _selectedOutputDevice))
+                       class="form-control"}}
+                        {{#each webrtc.outputDeviceList as |outputDevice|}}
+                            {{#x-option value=outputDevice}}{{outputDevice.label}}{{/x-option}}
+                        {{/each}}
+                    {{/x-select}}
+                </div>
+            </div>
+        {{/if}}
+        {{#if video}}
+            <div class="entry-row">
+                <div class="entry-label">
+                    <label for="resolution-select">
+                        <span class="sr-only">
+                            {{t "chat.video.resolution"}}
+                        </span>
+                        <i class="pc pc-signal"></i>
+                    </label>
+                </div>
+                <div class="entry-values">
+                    {{#x-select
+                       id="resolution-select"
+                       value=selectedResolution
+                       action=(action (mut selectedResolution))
+                       class="form-control"}}
+                        {{#each webrtc.resolutionList as |resolution|}}
+                            {{#x-option value=resolution}}{{resolution.label}}{{/x-option}}
+                        {{/each}}
+                    {{/x-select}}
+                </div>
+            </div>
+        {{/if}}
+    {{else}}
+        <div class="browser-settings-message">
+            {{t "chat.video.browserMediaSettings"}}
+        </div>
+    {{/if}}
+    <div class="entry-row">
+        <div class="entry-label">
+            <i class="pc pc-trouble-shoot"></i>
+        </div>
+        <div class="entry-values">
+            <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
+                {{t "chat.video.troubleshoot"}}
+            </button>
+        </div>
+    </div>
+</div>
