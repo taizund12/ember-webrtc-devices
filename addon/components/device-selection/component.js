@@ -1,42 +1,88 @@
 /* global cheet */
 
+import LoggerMixin from 'web-directory/mixins/logger';
 import Ember from 'ember';
 import layout from './template';
 
 const {
     computed,
     Component,
-    inject
+    inject,
+    observer
 } = Ember;
 
-export default Component.extend({
+export default Component.extend(LoggerMixin, {
     layout: layout,
     classNameBindings: [':device-selection'],
 
     selectedCamera: null,
     selectedMicrophone: null,
     selectedResolution: null,
+    selectedOutputDevice: null,
     selectedFilter: null,
 
     audio: true,
     video: true,
+    troubleshoot: true,
 
     webrtc: inject.service(),
 
     canShareAudio: computed.reads('webrtc.canShareAudio'),
     canShareVideo: computed.reads('webrtc.canShareVideo'),
 
-    // selectedOutputDevice is provided by the rendering component, and will
-    // propagate up when chaged, but the _selectedOutputDevice computed
-    // allows us to do some low level work when the selection changes
-    selectedOutputDevice: null,
-    _selectedOutputDevice: computed('selectedOutputDevice', {
-        get: function () {
-            return this.get('selectedOutputDevice');
+    didInsertElement() {
+        this._super(...arguments);
+
+        if (this.get('video')) {
+            cheet('i n s t a', () => {
+                this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
+            });
+        }
+
+        this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
+    },
+
+    willDestroyElement() {
+        this._super(...arguments);
+
+        if (this.get('video')) {
+            cheet.disable('i n s t a');
+            this.set('advancedOptions', null);
+        }
+    },
+
+    selectedCameraId: computed.reads('selectedCamera.deviceId'),
+    selectedResolutionId: computed.reads('selectedResolution.presetId'),
+    selectedMicrophoneId: computed.reads('selectedMicrophone.deviceId'),
+    selectedOutputDeviceId: computed.reads('selectedOutputDevice.deviceId'),
+
+    changeOutputDevice: observer('selectedOutputDevice', function () {
+        this.send('changeOutputDevice', this.get('selectedOutputDeviceId'));
+    }),
+
+    actions: {
+        openTroubleshoot() {
+            this.attrs.openTroubleshoot();
         },
-        set: _.debounce(function (key, val) {
+
+        playTestSound() {
             const audio = this.$('.preview-audio')[0];
-            const outputDevice = val;
+            audio.currentTime = 0;
+            audio.play();
+        },
+
+        changeCamera(id) {
+            this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id));
+        },
+
+        changeMicrophone(id) {
+            this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id));
+        },
+
+        changeOutputDevice(id) {
+            const outputDevice = this.get('webrtc.outputDeviceList').findBy('deviceId', id);
+            const audio = this.$('.preview-audio')[0];
+
             if (!audio || !outputDevice) {
                 return;
             }
@@ -47,39 +93,11 @@ export default Component.extend({
                 audio.pause();
                 audio.muted = false;
             });
-            this.set('selectedOutputDevice', val);
-            return val;
-        }, 250)
-    }),
+            this.set('selectedOutputDevice', outputDevice);
+        },
 
-    didInsertElement() {
-        this._super(...arguments);
-
-        if (!this.get('video')) {
-            return;
-        }
-
-        cheet('i n s t a', () => {
-            this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
-        });
-    },
-
-    willDestroyElement() {
-        this._super(...arguments);
-
-        if (!this.get('video')) {
-            return;
-        }
-
-        cheet.disable('i n s t a');
-        this.set('advancedOptions', null);
-    },
-
-    actions: {
-        playTestSound: function () {
-            const audio = this.$('.preview-audio')[0];
-            audio.currentTime = 0;
-            audio.play();
+        changeResolution(id) {
+            this.set('selectedResolution', this.get('webrtc.resolutionList').findBy('presetId', id));
         }
     }
 });

@@ -248,5 +248,5 @@ export default Mixin.create({
 
     setDefaultOutputDevice(el) {
         return this.setOutputDevice(el, this.get('defaultOutputDevice'));
-    },
+    }
 });

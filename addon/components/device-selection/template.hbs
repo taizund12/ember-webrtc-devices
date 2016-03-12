@@ -3,21 +3,21 @@
         {{#if (and webrtc.cameraList.length video)}}
             <div class="entry-row">
                 <div class="entry-label">
-                    <label for="camera-select">
+                    <label for="{{concat elementId '-camera-select'}}">
                         <span class="sr-only">
                             {{t "chat.video.videoSource"}}
                         </span>
-                        <i class="pc-moon pc-chat"></i>
+                        <i class="pc-moon pc-video"></i>
                     </label>
                 </div>
                 <div class="entry-values">
                     {{#if canShareVideo}}
-                        {{#x-select id="camera-select"
-                           value=selectedCamera
-                           action=(action (mut selectedCamera))
+                        {{#x-select id=(concat elementId '-camera-select')
+                           value=selectedCameraId
+                           action="changeCamera"
                            class="form-control"}}
                             {{#each webrtc.cameraList as |camera|}}
-                                {{#x-option value=camera}}{{camera.label}}{{/x-option}}
+                                {{#x-option value=camera.deviceId}}{{camera.label}}{{/x-option}}
                             {{/each}}
                         {{/x-select}}
                     {{else}}
@@ -28,15 +28,15 @@
             {{#if advancedOptions}}
                 <div class="entry-row">
                     <div class="entry-label">
-                        <label for="filter-select">
+                        <label for="{{concat elementId '-filter-select'}}">
                             <i class="pc pc-picture"></i>
                         </label>
                     </div>
                     <div class="entry-values">
                         {{#x-select
-                           id="filter-select"
+                           id=(concat elementId '-filter-select')
                            value=selectedFilter
-                           action=(action (mut selectedFilter))
+                           action="(action (mut selectedFilter))"
                            class="form-control"}}
                             {{#each advancedOptions as |option|}}
                                 {{#x-option value=option}}{{option}}{{/x-option}}
@@ -49,7 +49,7 @@
         {{#if (and webrtc.microphoneList.length audio)}}
             <div class="entry-row">
                 <div class="entry-label">
-                    <label for="microphone-select">
+                    <label for="{{concat elementId '-microphone-select'}}">
                         <span class="sr-only">
                             {{t "chat.video.audioSource"}}
                         </span>
@@ -59,12 +59,12 @@
                 <div class="entry-values">
                     {{#if canShareAudio}}
                         {{#x-select
-                           id="microphone-select"
-                           value=selectedMicrophone
-                           action=(action (mut selectedMicrophone))
+                           id=(concat elementId '-microphone-select')
+                           value=selectedMicrophoneId
+                           action="changeMicrophone"
                            class="form-control"}}
                             {{#each webrtc.microphoneList as |microphone|}}
-                                {{#x-option value=microphone}}{{microphone.label}}{{/x-option}}
+                                {{#x-option value=microphone.deviceId}}{{microphone.label}}{{/x-option}}
                             {{/each}}
                         {{/x-select}}
                     {{else}}
@@ -76,7 +76,7 @@
         {{#if (and webrtc.outputDeviceList.length audio)}}
             <div class="entry-row">
                 <div class="entry-label">
-                    <label for="outputDevice-select">
+                    <label for="{{concat elementId '-outputDevice-select'}}">
                         <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "chat.video.audioDestinationTooltip"}}">
                             <span class="sr-only">
                                 {{t "chat.video.audioDestination"}}
@@ -92,12 +92,12 @@
                 </div>
                 <div class="entry-values">
                     {{#x-select
-                       id="speakers-select"
-                       value=_selectedOutputDevice
-                       action=(action (mut _selectedOutputDevice))
+                       id=(concat elementId '-speakers-select')
+                       value=selectedOutputDeviceId
+                       action="changeOutputDevice"
                        class="form-control"}}
                         {{#each webrtc.outputDeviceList as |outputDevice|}}
-                            {{#x-option value=outputDevice}}{{outputDevice.label}}{{/x-option}}
+                            {{#x-option value=outputDevice.deviceId}}{{outputDevice.label}}{{/x-option}}
                         {{/each}}
                     {{/x-select}}
                 </div>
@@ -106,7 +106,7 @@
         {{#if video}}
             <div class="entry-row">
                 <div class="entry-label">
-                    <label for="resolution-select">
+                    <label for="{{concat elementId '-resolution-select'}}">
                         <span class="sr-only">
                             {{t "chat.video.resolution"}}
                         </span>
@@ -115,12 +115,12 @@
                 </div>
                 <div class="entry-values">
                     {{#x-select
-                       id="resolution-select"
-                       value=selectedResolution
-                       action=(action (mut selectedResolution))
+                       id=(concat elementId '-resolution-select')
+                       value=selectedResolutionId
+                       action="changeResolution"
                        class="form-control"}}
                         {{#each webrtc.resolutionList as |resolution|}}
-                            {{#x-option value=resolution}}{{resolution.label}}{{/x-option}}
+                            {{#x-option value=resolution.presetId}}{{resolution.label}}{{/x-option}}
                         {{/each}}
                     {{/x-select}}
                 </div>
@@ -131,14 +131,16 @@
             {{t "chat.video.browserMediaSettings"}}
         </div>
     {{/if}}
-    <div class="entry-row">
-        <div class="entry-label">
-            <i class="pc pc-trouble-shoot"></i>
+    {{#if troubleshoot}}
+        <div class="entry-row">
+            <div class="entry-label">
+                <i class="pc pc-trouble-shoot"></i>
+            </div>
+            <div class="entry-values">
+                <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
+                    {{t "chat.video.troubleshoot"}}
+                </button>
+            </div>
         </div>
-        <div class="entry-values">
-            <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
-                {{t "chat.video.troubleshoot"}}
-            </button>
-        </div>
-    </div>
+    {{/if}}
 </div>
