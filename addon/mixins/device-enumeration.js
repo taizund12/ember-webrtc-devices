@@ -11,16 +11,17 @@ const {
 } = Ember;
 
 export default Mixin.create({
+    // options
+    fullHd: false,
+
     canListDevices: false,
-    waitingForMedia: null,
 
     // camera and video stuff
     hasCameraPermission: false,
     cameraList: [],
     hasCamera: computed('cameraList', function () {
-        return _.any(this.get('cameraList'), (camera) =>  camera.deviceId !== "default");
+        return !!_.find(this.get('cameraList'), (camera) =>  camera.deviceId !== "default");
     }),
-    localVideoNotReceived: false,
     canShareVideo: computed('canListDevices', 'hasCameraPermission', 'hasCamera', 'hasMicPermission', function () {
         // if old version we just assume they can since there's no way to really know
         if (!this.get('canListDevices')) {
@@ -38,7 +39,7 @@ export default Mixin.create({
     hasMicPermission: false,
     microphoneList: [],
     hasMicrophone: computed('microphoneList', function () {
-        return _.any(this.get('microphoneList'), (mic) =>  mic.deviceId !== "default");
+        return !!_.find(this.get('microphoneList'), (mic) =>  mic.deviceId !== "default");
     }),
     canShareAudio: computed('canListDevices', 'hasCameraPermission', 'hasMicrophone', 'hasMicPermission', function () {
         // if old version we just assume they can since there's no way to really know
@@ -78,7 +79,7 @@ export default Mixin.create({
     },
 
     updateDefaultDevices(devices) {
-        throw new Error('updateDefaultDevices should be overridden - do you need to save preferences?');
+        throw new Error('updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
     },
 
     enumerateResolutions() {
@@ -123,18 +124,21 @@ export default Mixin.create({
                 }
             }
         };
-        // TODO: enable "full HD" in the future?
-        // const fullHd = {
-        //     label: this.lookup('chat.video.resolution.fullHd').toString(),
-        //     presetId: 4,
-        //     constraints: {
-        //         video: {
-        //             width: { exact: 1920 },
-        //             height: { exact: 1080 }
-        //         }
-        //     }
-        // };
-        resolutions.pushObject(hd);
+
+        // full hd is disabled by default because very few computers actually support this
+        if (this.get('fullHd')) {
+            const fullHd = {
+                label: this.lookup('chat.video.resolution.fullHd').toString(),
+                presetId: 4,
+                constraints: {
+                    video: {
+                        width: { exact: 1920 },
+                        height: { exact: 1080 }
+                    }
+                }
+            };
+            resolutions.pushObject(hd);
+        }
         return resolutions;
     },
 
