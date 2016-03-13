@@ -1,12 +1,13 @@
 #### PSA
 
-This addon is still under development and not ready for use.
+This addon is still under development and not *quite* ready for use.
 
 TODO:
-* [ ] bring in adapter.js
-* [ ] create dummy application
-* [ ] create unit tests
-* [ ] create integration tests
+* [x] bring in bower deps
+* [x] create dummy application
+* [ ] more unit tests
+* [ ] more integration tests
+* [ ] use try:testall to test multiple ember versions
 
 # webrtc-devices
 
@@ -16,6 +17,17 @@ This addon is designed to provide you with two things:
 up all the basic stuff.
 
 2. A component for selecting those devices
+
+This addon uses [ember-intl](https://github.com/yahoo/ember-intl) for i18n. It has it's own collection of keys (in English only). When using in your app, you'll want to replicate these i18n keys in your i18n. Eventually, I'd like to have a blueprint setup that does this for you automatically.
+
+## Setup
+
+`npm install --save-dev ember-webrtc-devices`
+`ember g ember-webrtc-devices`
+
+## Contributing
+
+See Contributing.md
 
 ## Installation
 
@@ -30,8 +42,7 @@ up all the basic stuff.
 
 ## Running Tests
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
+* `npm test`
 * `ember test --server`
 
 ## Building
