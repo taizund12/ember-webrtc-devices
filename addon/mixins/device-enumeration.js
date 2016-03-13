@@ -5,9 +5,7 @@ import Ember from 'ember';
 const {
     Mixin,
     RSVP,
-    computed,
-    on,
-    run
+    computed
 } = Ember;
 
 export default Mixin.create({
@@ -78,7 +76,7 @@ export default Mixin.create({
         return this.enumerateDevices();
     },
 
-    updateDefaultDevices(devices) {
+    updateDefaultDevices(/*devices*/) {
         throw new Error('updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
     },
 
@@ -124,6 +122,7 @@ export default Mixin.create({
                 }
             }
         };
+        resolutions.pushObject(hd);
 
         // full hd is disabled by default because very few computers actually support this
         if (this.get('fullHd')) {
@@ -137,7 +136,7 @@ export default Mixin.create({
                     }
                 }
             };
-            resolutions.pushObject(hd);
+            resolutions.pushObject(fullHd);
         }
         return resolutions;
     },
