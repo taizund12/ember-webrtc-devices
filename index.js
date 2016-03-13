@@ -9,7 +9,7 @@ module.exports = {
   included: function(app) {
     this._super.included(app);
 
-    app.import('bower_components/lodash/lodash.js');
+    app.import(app.bowerDirectory + '/lodash/lodash.js');
     app.import(app.bowerDirectory + '/cheet.js/cheet.min.js');
 
     // Fix when https://github.com/webrtc/adapter/issues/206

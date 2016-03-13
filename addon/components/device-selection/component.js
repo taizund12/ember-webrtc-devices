@@ -38,8 +38,6 @@ export default Component.extend(/*LoggerMixin, */{
                 this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
             });
         }
-
-        this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
     },
 
     willDestroyElement() {
