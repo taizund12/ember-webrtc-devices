@@ -11,6 +11,7 @@ module.exports = {
 
     app.import(app.bowerDirectory + '/lodash/lodash.js');
     app.import(app.bowerDirectory + '/cheet.js/cheet.min.js');
+    app.import(app.bowerDirectory + '/webrtcsupport/webrtcsupport.bundle.js');
 
     // Fix when https://github.com/webrtc/adapter/issues/206
     app.import(app.bowerDirectory + '/webrtc-adapter/adapter-1.0.4.js');

@@ -83,7 +83,7 @@ export default Mixin.create({
     enumerateResolutions() {
         const resolutions = this.get('resolutionList');
         resolutions.pushObject({
-            label: this.lookup('chat.video.resolution.low').toString(),
+            label: this.lookup('webrtcDevices.resolutions.low').toString(),
             presetId: 1,
             constraints: {
                 video: {
@@ -94,7 +94,7 @@ export default Mixin.create({
         });
 
         resolutions.pushObject({
-            label: this.lookup('chat.video.resolution.medium').toString(),
+            label: this.lookup('webrtcDevices.resolutions.medium').toString(),
             presetId: 2,
             constraints: {
                 video: {
@@ -105,7 +105,7 @@ export default Mixin.create({
         });
 
         const hd = {
-            label: this.lookup('chat.video.resolution.high').toString(),
+            label: this.lookup('webrtcDevices.resolutions.high').toString(),
             presetId: 3,
             constraints: {
                 video: {
@@ -127,7 +127,7 @@ export default Mixin.create({
         // full hd is disabled by default because very few computers actually support this
         if (this.get('fullHd')) {
             const fullHd = {
-                label: this.lookup('chat.video.resolution.fullHd').toString(),
+                label: this.lookup('webrtcDevices.resolutions.fullHd').toString(),
                 presetId: 4,
                 constraints: {
                     video: {
@@ -158,14 +158,14 @@ export default Mixin.create({
 
         const addCamera = (device, hasLabel) => {
             if (!hasLabel) {
-                device.label = this.lookup('chat.video.cameraLabel', {number: ++cameraCount}).toString();
+                device.label = this.lookup('webrtcDevices.cameraLabel', {number: ++cameraCount}).toString();
             }
             this.set('hasCameraPermission', this.get('hasCameraPermission') || hasLabel);
             cameras.push(device);
         };
         const addMicrophone = (device, hasLabel) => {
             if (!hasLabel) {
-                device.label = this.lookup('chat.video.microphoneLabel', {number: ++microphoneCount}).toString();
+                device.label = this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
             }
             this.set('hasMicPermission', this.get('hasMicPermission') || hasLabel);
             microphones.push(device);
@@ -175,7 +175,7 @@ export default Mixin.create({
                 return;
             }
             if (!hasLabel) {
-                device.label = this.lookup('chat.video.outputDeviceLabel', {number: ++outputDeviceCount}).toString();
+                device.label = this.lookup('webrtcDevices.outputDeviceLabel', {number: ++outputDeviceCount}).toString();
             }
             outputDevices.push(device);
         };

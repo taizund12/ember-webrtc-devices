@@ -5,7 +5,7 @@
                 <div class="entry-label">
                     <label for="{{concat elementId '-camera-select'}}">
                         <span class="sr-only">
-                            {{t "chat.video.videoSource"}}
+                            {{t "webrtcDevices.videoSource"}}
                         </span>
                         <i class="pc-moon pc-video"></i>
                     </label>
@@ -21,7 +21,7 @@
                             {{/each}}
                         {{/x-select}}
                     {{else}}
-                        <span>{{t "chat.video.noCameraDetected"}}</span>
+                        <span>{{t "webrtcDevices.noCameraDetected"}}</span>
                     {{/if}}
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="entry-label">
                     <label for="{{concat elementId '-microphone-select'}}">
                         <span class="sr-only">
-                            {{t "chat.video.audioSource"}}
+                            {{t "webrtcDevices.audioSource"}}
                         </span>
                         <i class="pc-moon pc-microphone"></i>
                     </label>
@@ -68,7 +68,7 @@
                             {{/each}}
                         {{/x-select}}
                     {{else}}
-                        <span>{{t "chat.video.noMicrophoneDetected"}}</span>
+                        <span>{{t "webrtcDevices.noMicrophoneDetected"}}</span>
                     {{/if}}
                 </div>
             </div>
@@ -77,9 +77,9 @@
             <div class="entry-row">
                 <div class="entry-label">
                     <label for="{{concat elementId '-outputDevice-select'}}">
-                        <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "chat.video.audioDestinationTooltip"}}">
+                        <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "webrtcDevices.audioDestinationTooltip"}}">
                             <span class="sr-only">
-                                {{t "chat.video.audioDestination"}}
+                                {{t "webrtcDevices.audioDestination"}}
                             </span>
                             <i class="pc pc-speakers"></i>
                         </a>
@@ -108,7 +108,7 @@
                 <div class="entry-label">
                     <label for="{{concat elementId '-resolution-select'}}">
                         <span class="sr-only">
-                            {{t "chat.video.resolution"}}
+                            {{t "webrtcDevices.resolution"}}
                         </span>
                         <i class="pc pc-signal"></i>
                     </label>
@@ -128,7 +128,7 @@
         {{/if}}
     {{else}}
         <div class="browser-settings-message">
-            {{t "chat.video.browserMediaSettings"}}
+            {{t "webrtcDevices.browserMediaSettings"}}
         </div>
     {{/if}}
     {{#if troubleshoot}}
@@ -138,7 +138,7 @@
             </div>
             <div class="entry-values">
                 <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
-                    {{t "chat.video.troubleshoot"}}
+                    {{t "webrtcDevices.troubleshoot"}}
                 </button>
             </div>
         </div>
