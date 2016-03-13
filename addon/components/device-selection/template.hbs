@@ -103,7 +103,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if video}}
+        {{#if (and webrtc.cameraList.length video)}}
             <div class="entry-row">
                 <div class="entry-label">
                     <label for="{{concat elementId '-resolution-select'}}">
