@@ -6,6 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "cheet.js": "^0.3.3",
-    "webrtc-adapter": "gh-pages"
+    "webrtc-adapter": "gh-pages",
+    "lodash": "^4.6.1"
   }
 }
