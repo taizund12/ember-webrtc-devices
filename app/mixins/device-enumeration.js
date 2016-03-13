@@ -1,1 +1,1 @@
-export { default } from 'webrtc-devices/mixins/device-enumeration';
+export { default } from 'webrtc-devices/mixins/device-enumeration'
