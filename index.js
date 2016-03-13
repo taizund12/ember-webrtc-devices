@@ -10,6 +10,7 @@ module.exports = {
     this._super.included(app);
 
     app.import('bower_components/lodash/lodash.js');
+    app.import(app.bowerDirectory + '/cheet.js/cheet.min.js');
 
     // Fix when https://github.com/webrtc/adapter/issues/206
     app.import(app.bowerDirectory + '/webrtc-adapter/adapter-1.0.4.js');
