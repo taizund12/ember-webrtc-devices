@@ -1,10 +1,10 @@
 /* global cheet */
 
 // import LoggerMixin from 'web-directory/mixins/logger'
-import Ember from 'ember'
-import layout from './template'
+import Ember from 'ember';
+import layout from './template';
 
-const {computed, Component, inject, observer} = Ember
+const {computed, Component, inject, observer} = Ember;
 
 export default Component.extend(/* LoggerMixin, */{
   layout: layout,
@@ -26,21 +26,21 @@ export default Component.extend(/* LoggerMixin, */{
   canShareVideo: computed.reads('webrtc.canShareVideo'),
 
   didInsertElement () {
-    this._super(...arguments)
+    this._super(...arguments);
 
     if (this.get('video')) {
       cheet('i n s t a', () => {
-        this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none'])
-      })
+        this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
+      });
     }
   },
 
   willDestroyElement () {
-    this._super(...arguments)
+    this._super(...arguments);
 
     if (this.get('video')) {
-      cheet.disable('i n s t a')
-      this.set('advancedOptions', null)
+      cheet.disable('i n s t a');
+      this.set('advancedOptions', null);
     }
   },
 
@@ -50,47 +50,47 @@ export default Component.extend(/* LoggerMixin, */{
   selectedOutputDeviceId: computed.reads('selectedOutputDevice.deviceId'),
 
   changeOutputDevice: observer('selectedOutputDevice', function () {
-    this.send('changeOutputDevice', this.get('selectedOutputDeviceId'))
+    this.send('changeOutputDevice', this.get('selectedOutputDeviceId'));
   }),
 
   actions: {
     openTroubleshoot () {
-      this.attrs.openTroubleshoot()
+      this.attrs.openTroubleshoot();
     },
 
     playTestSound () {
-      const audio = this.$('.preview-audio')[0]
-      audio.currentTime = 0
-      audio.play()
+      const audio = this.$('.preview-audio')[0];
+      audio.currentTime = 0;
+      audio.play();
     },
 
     changeCamera (id) {
-      this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id))
+      this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id));
     },
 
     changeMicrophone (id) {
-      this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id))
+      this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id));
     },
 
     changeOutputDevice (id) {
-      const outputDevice = this.get('webrtc.outputDeviceList').findBy('deviceId', id)
-      const audio = this.$('.preview-audio')[0]
+      const outputDevice = this.get('webrtc.outputDeviceList').findBy('deviceId', id);
+      const audio = this.$('.preview-audio')[0];
 
       if (!audio || !outputDevice) {
-        return
+        return;
       }
-      audio.muted = true
-      audio.currentTime = 0
-      audio.play()
+      audio.muted = true;
+      audio.currentTime = 0;
+      audio.play();
       this.get('webrtc').setOutputDevice(audio, outputDevice).then(function () {
-        audio.pause()
-        audio.muted = false
-      })
-      this.set('selectedOutputDevice', outputDevice)
+        audio.pause();
+        audio.muted = false;
+      });
+      this.set('selectedOutputDevice', outputDevice);
     },
 
     changeResolution (id) {
-      this.set('selectedResolution', this.get('webrtc.resolutionList').findBy('presetId', id))
+      this.set('selectedResolution', this.get('webrtc.resolutionList').findBy('presetId', id));
     }
   }
-})
+});

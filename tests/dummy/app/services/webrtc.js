@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import DeviceEnumerationMixin from 'webrtc-devices/mixins/device-enumeration'
+import Ember from 'ember';
+import DeviceEnumerationMixin from 'webrtc-devices/mixins/device-enumeration';
 
 export default Ember.Service.extend(DeviceEnumerationMixin, {
   intl: Ember.inject.service(),
@@ -12,12 +12,12 @@ export default Ember.Service.extend(DeviceEnumerationMixin, {
   resolutionList: Ember.A(),
 
   init () {
-    this._super(...arguments)
-    this.initDevices()
+    this._super(...arguments);
+    this.initDevices();
   },
 
   lookup (key, hash) {
-    const intl = this.get('intl')
-    return intl.formatHtmlMessage(intl.findTranslationByKey(key), hash)
+    const intl = this.get('intl');
+    return intl.formatHtmlMessage(intl.findTranslationByKey(key), hash);
   }
-})
+});
