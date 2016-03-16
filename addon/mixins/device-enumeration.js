@@ -2,7 +2,7 @@
 
 import Ember from 'ember';
 
-const {Mixin, RSVP, computed} = Ember;
+const { Mixin, RSVP, computed, run } = Ember;
 
 export default Mixin.create({
   // options
@@ -66,10 +66,13 @@ export default Mixin.create({
   canShareScreen: false,
 
   // Returns a promise which resolves when all devices have been enumerated and loaded
-  initDevices () {
-    this.enumerateResolutions();
+  init () {
+    this._super(...arguments);
+    run.next(this, function () {
+      this.enumerateDevices();
+      this.enumerateResolutions();
+    });
     this.set('canShareScreen', webrtcsupport.supportScreenSharing);
-    return this.enumerateDevices();
   },
 
   updateDefaultDevices (/* devices */) {
@@ -149,7 +152,7 @@ export default Mixin.create({
     const outputDevices = [];
     const defaultDevice = {
       deviceId: 'default',
-      label: this.lookup('common.default').toString()
+      label: this.lookup('webrtcDevices.default').toString()
     };
 
     const addCamera = (device, hasLabel) => {

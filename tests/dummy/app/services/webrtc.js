@@ -11,11 +11,6 @@ export default Ember.Service.extend(DeviceEnumerationMixin, {
   outputDeviceList: Ember.A(),
   resolutionList: Ember.A(),
 
-  init () {
-    this._super(...arguments);
-    this.initDevices();
-  },
-
   lookup (key, hash) {
     const intl = this.get('intl');
     return intl.formatHtmlMessage(intl.findTranslationByKey(key), hash);
