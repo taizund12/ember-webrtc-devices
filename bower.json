@@ -8,7 +8,6 @@
     "cheet.js": "^0.3.3",
     "webrtc-adapter": "gh-pages",
     "webrtcsupport": "https://github.com/xdumaine/webrtcsupport.git#master",
-    "lodash": "^4.6.1",
-    "requirejs": "^2.1.22"
+    "lodash": "^4.6.1"
   }
 }
