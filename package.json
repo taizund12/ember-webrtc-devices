@@ -50,9 +50,10 @@
     "webcam"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.5",
     "broccoli-json-module": "0.0.1",
     "broccoli-merge-trees": "^1.1.1",
+    "broccoli-source": "^1.1.0",
+    "ember-cli-babel": "^5.1.5",
     "ember-cli-htmlbars": "^1.0.3"
   },
   "pre-push": [
