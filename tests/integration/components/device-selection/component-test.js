@@ -63,31 +63,37 @@ test('it shows a message iff the browser cannot enumerate devices', function (as
 });
 
 test('it shows a camera select and resolution select iff there are cameras, and video is true', function (assert) {
-  this.set('webrtc.cameraList', mockDevices);
-  this.renderDefault();
-  assert.equal(this.$('select').length, 2);
+  return Ember.run(this, function () {
+    this.get('webrtc.cameraList').pushObjects(mockDevices);
+    this.renderDefault();
+    assert.equal(this.$('select').length, 2);
 
-  this.set('webrtc.cameraList', []);
-  this.renderDefault();
-  assert.equal(this.$('select').length, 0);
+    this.get('webrtc.cameraList').clear();
+    this.renderDefault();
+    assert.equal(this.$('select').length, 0);
 
-  this.set('webrtc.cameraList', mockDevices);
-  this.render(hbs`
-        {{device-selection video=false}}
-    `);
-  assert.equal(this.$('select').length, 0);
+    this.get('webrtc.cameraList').pushObjects(mockDevices);
+    this.render(hbs`
+          {{device-selection video=false}}
+      `);
+    assert.equal(this.$('select').length, 0);
+    this.get('webrtc.cameraList').clear();
+  });
 });
 
 test('it shows microphone select iff there are microphones and audio is true', function (assert) {
-  this.set('webrtc.microphoneList', mockDevices);
-  this.renderDefault();
-  assert.equal(this.$('select').length, 1);
+  return Ember.run(this, function () {
+    this.get('webrtc.microphoneList').pushObjects(mockDevices);
+    this.renderDefault();
+    assert.equal(this.$('select').length, 1);
 
-  this.set('webrtc.microphoneList', mockDevices);
-  this.render(hbs`
-        {{device-selection audio=false}}
-    `);
-  assert.equal(this.$('select').length, 0);
+    this.get('webrtc.microphoneList').pushObjects(mockDevices);
+    this.render(hbs`
+          {{device-selection audio=false}}
+      `);
+    assert.equal(this.$('select').length, 0);
+    this.get('webrtc.microphoneList').clear();
+  });
 });
 
 // TODO: test initial selection of the selects

@@ -60,8 +60,8 @@ export default Mixin.create({
     return !this.get('noVideoHardware');
   }),
 
-  outputDeviceList: [],
-  resolutionList: [],
+  outputDeviceList: Ember.A(),
+  resolutionList: Ember.A(),
 
   canShareScreen: false,
 
@@ -73,6 +73,8 @@ export default Mixin.create({
       this.enumerateResolutions();
     });
     this.set('canShareScreen', webrtcsupport.supportScreenSharing);
+
+    this.lookup = this.lookup || ((key) => key);
   },
 
   updateDefaultDevices (/* devices */) {
