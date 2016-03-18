@@ -4,7 +4,7 @@
 import Ember from 'ember';
 import layout from './template';
 
-const {computed, Component, inject, observer} = Ember;
+const {computed, Component, inject} = Ember;
 
 export default Component.extend(/* LoggerMixin, */{
   layout: layout,
@@ -33,6 +33,11 @@ export default Component.extend(/* LoggerMixin, */{
         this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
       });
     }
+
+    this.send('changeCamera', this.get('selectedCamera.deviceId'));
+    this.send('changeMicrophone', this.get('selectedMicrophone.deviceId'));
+    this.send('changeResolution', this.get('selectedResolution.presetId'));
+    this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
   },
 
   willDestroyElement () {
@@ -48,10 +53,6 @@ export default Component.extend(/* LoggerMixin, */{
   selectedResolutionId: computed.reads('selectedResolution.presetId'),
   selectedMicrophoneId: computed.reads('selectedMicrophone.deviceId'),
   selectedOutputDeviceId: computed.reads('selectedOutputDevice.deviceId'),
-
-  changeOutputDevice: observer('selectedOutputDevice', function () {
-    this.send('changeOutputDevice', this.get('selectedOutputDeviceId'));
-  }),
 
   actions: {
     openTroubleshoot () {
@@ -79,14 +80,15 @@ export default Component.extend(/* LoggerMixin, */{
       if (!audio || !outputDevice) {
         return;
       }
+
       audio.muted = true;
       audio.currentTime = 0;
       audio.play();
-      this.get('webrtc').setOutputDevice(audio, outputDevice).then(function () {
+      this.get('webrtc').setOutputDevice(audio, outputDevice).then(() => {
         audio.pause();
         audio.muted = false;
+        this.set('selectedOutputDevice', outputDevice);
       });
-      this.set('selectedOutputDevice', outputDevice);
     },
 
     changeResolution (id) {
