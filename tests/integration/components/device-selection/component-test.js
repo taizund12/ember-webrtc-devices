@@ -96,6 +96,31 @@ test('it shows microphone select iff there are microphones and audio is true', f
   });
 });
 
+test('it shows a troubleshoot button if an openTroubleshoot action is provided', function (assert) {
+  const done = assert.async();
+  this.renderDefault();
+  assert.equal(this.$('button').length, 0);
+
+  this.actions = {
+    dummyAction: function () {
+      done();
+    }
+  };
+
+  this.render(hbs`
+    {{device-selection openTroubleshoot=(action "dummyAction") troubleshoot=false}}
+  `);
+
+  assert.equal(this.$('button').length, 0);
+
+  this.render(hbs`
+    {{device-selection openTroubleshoot=(action "dummyAction")}}
+  `);
+
+  assert.equal(this.$('button').length, 1);
+  this.$('button').trigger('click');
+});
+
 // TODO: test initial selection of the selects
 
 // TODO: test changing value of the selects
