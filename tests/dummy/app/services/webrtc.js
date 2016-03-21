@@ -10,6 +10,7 @@ export default Ember.Service.extend(DeviceEnumerationMixin, {
   microphoneList: Ember.A(),
   outputDeviceList: Ember.A(),
   resolutionList: Ember.A(),
+  setOutputDevice: Ember.RSVP.resolve(),
 
   lookup (key, hash) {
     const intl = this.get('intl');
