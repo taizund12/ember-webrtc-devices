@@ -175,14 +175,14 @@ test('it should start with specified outputDevice', function (assert) {
     this.set('outputDevice', mockDevices[0]);
     this.renderDefault();
 
-    assert.equal(this.$('select').val(), mockDevices[0].deviceId);
-    assert.equal(this.$('select option:selected').text(), mockDevices[0].label);
+    assert.equal(this.$('select[id*="-speakers-select"]').val(), mockDevices[0].deviceId);
+    assert.equal(this.$('select[id*="-speakers-select"] option:selected').text(), mockDevices[0].label);
 
     this.set('outputDevice', mockDevices[1]);
     this.renderDefault();
 
-    assert.equal(this.$('select').val(), mockDevices[1].deviceId);
-    assert.equal(this.$('select option:selected').text(), mockDevices[1].label);
+    assert.equal(this.$('select[id*="-speakers-select"]').val(), mockDevices[1].deviceId);
+    assert.equal(this.$('select[id*="-speakers-select"] option:selected').text(), mockDevices[1].label);
   });
 });
 
@@ -231,7 +231,6 @@ test('it should change mic', function (assert) {
 
     fillIn('select', mockDevices[1].deviceId).then(() => {
       assert.equal(this.get('microphone'), mockDevices[1]);
-      this.get('webrtc.microphoneList').clear();
     });
   });
 });
@@ -245,8 +244,9 @@ test('it should change resolution', function (assert) {
     const select = this.$('select[id*="-resolution-select"]');
     assert.equal(select.val(), mockResolutions[0].presetId);
 
-    fillIn('select', mockResolutions[1].presetId).then(() => {
-      assert.equal(this.get('resolution'), mockResolutions[1]);
+    var self = this;
+    return fillIn('select[id*="-resolution-select"]', mockResolutions[1].presetId).then(() => {
+      assert.equal(self.get('resolution'), mockResolutions[1]);
     });
   });
 });
@@ -263,7 +263,7 @@ test('it should change outputDevice', function (assert) {
     const select = this.$('select[id*="-speakers-select"]');
     assert.equal(select.val(), mockDevices[0].deviceId);
 
-    fillIn('select', mockDevices[1].deviceId).then(() => {
+    fillIn('select[id*="-speakers-select"]', mockDevices[1].deviceId).then(() => {
       assert.equal(this.get('outputDevice'), mockDevices[1]);
     });
   });
