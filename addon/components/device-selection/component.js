@@ -87,6 +87,10 @@ export default Component.extend(/* LoggerMixin, */{
         return;
       }
 
+      if (!audio.play) {
+        return console.warn('Audio playback not supported');
+      }
+
       audio.muted = true;
       audio.currentTime = 0;
       audio.play();
