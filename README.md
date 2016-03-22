@@ -7,9 +7,11 @@ TODO:
 * [x] create dummy application
 * [ ] more unit tests
 * [ ] more integration tests
-* [ ] use try:testall to test multiple ember versions
+* [x] use try:testall to test multiple ember versions
 
 # webrtc-devices
+
+[![Build Status](https://travis-ci.org/MyPureCloud/ember-webrtc-devices.svg?branch=master)](https://travis-ci.org/MyPureCloud/ember-webrtc-devices)
 
 This addon is designed to provide you with two things:
 

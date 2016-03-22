@@ -54,9 +54,15 @@ export default Component.extend(/* LoggerMixin, */{
   selectedMicrophoneId: computed.reads('selectedMicrophone.deviceId'),
   selectedOutputDeviceId: computed.reads('selectedOutputDevice.deviceId'),
 
+  showTroubleshoot: computed('troubleshoot', function () {
+    return this.get('troubleshoot') && typeof this.attrs.openTroubleshoot === 'function';
+  }),
+
   actions: {
     openTroubleshoot () {
-      this.attrs.openTroubleshoot();
+      if (typeof this.attrs.openTroubleshoot === 'function') {
+        this.attrs.openTroubleshoot();
+      }
     },
 
     playTestSound () {

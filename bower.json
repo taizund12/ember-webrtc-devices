@@ -9,5 +9,6 @@
     "webrtc-adapter": "gh-pages",
     "webrtcsupport": "https://github.com/xdumaine/webrtcsupport.git#master",
     "lodash": "^4.6.1"
-  }
+  },
+  "resolutions": {}
 }
