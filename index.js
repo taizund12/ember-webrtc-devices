@@ -26,5 +26,8 @@ module.exports = {
     trees.push(json(tree));
 
     return mergeTrees(trees, { overwrite: true });
+  },
+  treeForPublic: function (tree) {
+    return tree;
   }
 };

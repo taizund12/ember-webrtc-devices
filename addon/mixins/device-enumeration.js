@@ -239,12 +239,12 @@ export default Mixin.create({
       }).then(function () {
         el.setSinkId(device.deviceId);
       }).then(() => {
-        this.logger.log('successfully set audio output device');
+        Ember.Logger.log('successfully set audio output device');
       }).catch((err) => {
-        this.logger.error('failed to set audio output device', err);
+        Ember.Logger.error('failed to set audio output device', err);
       });
     } else {
-      this.logger.error('attempted to set sink id in unsupported browser');
+      Ember.Logger.error('attempted to set sink id in unsupported browser');
       return RSVP.Promise.reject('Not supported');
     }
   },
