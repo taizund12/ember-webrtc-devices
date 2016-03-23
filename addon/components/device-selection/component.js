@@ -4,7 +4,7 @@
 import Ember from 'ember';
 import layout from './template';
 
-const {computed, Component, inject} = Ember;
+const {computed, Component, inject, run} = Ember;
 
 export default Component.extend(/* LoggerMixin, */{
   layout: layout,
@@ -28,16 +28,18 @@ export default Component.extend(/* LoggerMixin, */{
   didInsertElement () {
     this._super(...arguments);
 
-    if (this.get('video')) {
-      cheet('i n s t a', () => {
-        this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
-      });
-    }
+    run.scheduleOnce('afterRender', () => {
+      if (this.get('video')) {
+        cheet('i n s t a', () => {
+          this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
+        });
+      }
 
-    this.send('changeCamera', this.get('selectedCamera.deviceId'));
-    this.send('changeMicrophone', this.get('selectedMicrophone.deviceId'));
-    this.send('changeResolution', this.get('selectedResolution.presetId'));
-    this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
+      this.send('changeCamera', this.get('selectedCamera.deviceId'));
+      this.send('changeMicrophone', this.get('selectedMicrophone.deviceId'));
+      this.send('changeResolution', this.get('selectedResolution.presetId'));
+      this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
+    });
   },
 
   willDestroyElement () {
