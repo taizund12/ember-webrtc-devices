@@ -214,9 +214,9 @@ export default Mixin.create({
       }
 
       this.setProperties({
-        cameraList: cameras,
-        microphoneList: microphones,
-        outputDeviceList: outputDevices
+        cameraList: Ember.A(cameras),
+        microphoneList: Ember.A(microphones),
+        outputDeviceList: Ember.A(outputDevices)
       });
     }).catch(function () {
       this.set('canListDevices', false);
