@@ -10,7 +10,8 @@
       "medium": "Medium",
       "high": "HD"
     },
-    "troubleshoot": "Troubleshoot",
+    "difficulty": "Having difficulty?",
+    "troubleshoot": "Test your settings",
     "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
     "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
     "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
