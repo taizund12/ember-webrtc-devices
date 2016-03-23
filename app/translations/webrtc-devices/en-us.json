@@ -1,10 +1,14 @@
 {
   "webrtcDevices": {
     "videoSource": "Video sources",
+    "cameraSelect": "Select camera",
     "audioSource": "Audio source",
+    "microphoneSelect":"Select microphone",
     "audioDestination": "Audio destination (speakers)",
     "audioDestinationTooltip": "Test speakers",
+    "outputSelect": "Select speakers",
     "resolution": "Resolution",
+    "resolutionSelect": "Select resolution", 
     "resolutions": {
       "low": "Low",
       "medium": "Medium",
