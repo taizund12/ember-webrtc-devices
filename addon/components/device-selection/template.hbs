@@ -7,7 +7,7 @@
                         <span class="sr-only">
                             {{t "webrtcDevices.videoSource"}}
                         </span>
-                        <i class="pc-moon pc-video"></i>
+                        <i class="pc-moon pc-video" title="{{t "webrtcDevices.cameraSelect"}}"></i>
                     </label>
                 </div>
                 <div class="entry-values">
@@ -53,7 +53,7 @@
                         <span class="sr-only">
                             {{t "webrtcDevices.audioSource"}}
                         </span>
-                        <i class="pc-moon pc-microphone"></i>
+                        <i class="pc-moon pc-microphone" title="{{t "webrtcDevices.microphoneSelect"}}"></i>
                     </label>
                 </div>
                 <div class="entry-values">
@@ -81,7 +81,7 @@
                             <span class="sr-only">
                                 {{t "webrtcDevices.audioDestination"}}
                             </span>
-                            <i class="pc pc-speakers"></i>
+                            <i class="pc pc-speakers" title="{{t "webrtcDevices.outputSelect"}}"></i>
                         </a>
                     </label>
                     <audio class="hide preview-audio">
@@ -110,7 +110,7 @@
                         <span class="sr-only">
                             {{t "webrtcDevices.resolution"}}
                         </span>
-                        <i class="pc pc-signal"></i>
+                        <i class="pc pc-signal" title="{{t "webrtcDevices.resolutionSelect"}}"></i>
                     </label>
                 </div>
                 <div class="entry-values">
@@ -132,11 +132,9 @@
         </div>
     {{/if}}
     {{#if showTroubleshoot}}
-        <div class="entry-row">
-            <div class="entry-label">
-                <i class="pc pc-trouble-shoot"></i>
-            </div>
+        <div class="entry-row troubleshoot">
             <div class="entry-values">
+                {{t "webrtcDevices.difficulty"}}
                 <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
                     {{t "webrtcDevices.troubleshoot"}}
                 </button>
