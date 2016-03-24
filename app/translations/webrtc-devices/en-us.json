@@ -3,7 +3,7 @@
     "videoSource": "Video sources",
     "cameraSelect": "Select camera",
     "audioSource": "Audio source",
-    "microphoneSelect":"Select microphone",
+    "microphoneSelect": "Select microphone",
     "audioDestination": "Audio destination (speakers)",
     "audioDestinationTooltip": "Test speakers",
     "outputSelect": "Select speakers",
