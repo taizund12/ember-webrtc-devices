@@ -74,19 +74,19 @@ export default Component.extend(/* LoggerMixin, */{
     },
 
     changeCamera (id) {
-      if (this.get('selectedCamera.id') !== id) {
+      if (this.get('selectedCamera.deviceId') !== id) {
         this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id));
       }
     },
 
     changeMicrophone (id) {
-      if (this.get('selectedMicrophone.id') !== id) {
+      if (this.get('selectedMicrophone.deviceId') !== id) {
         this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id));
       }
     },
 
     changeOutputDevice (id) {
-      if (this.get('selectedOutputDevice.id') === id) {
+      if (this.get('selectedOutputDevice.deviceId') === id) {
         return;
       }
       const outputDevice = this.get('webrtc.outputDeviceList').findBy('deviceId', id);
@@ -111,7 +111,7 @@ export default Component.extend(/* LoggerMixin, */{
     },
 
     changeResolution (id) {
-      if (this.get('selectedResolution.id') !== id) {
+      if (this.get('selectedResolution.presetId') !== id) {
         this.set('selectedResolution', this.get('webrtc.resolutionList').findBy('presetId', id));
       }
     }
