@@ -83,7 +83,7 @@ export default Mixin.create({
 
   enumerateResolutions () {
     const resolutions = this.get('resolutionList');
-    resolutions.pushObject({
+    resolutions.pushObject(Ember.Object.create({
       label: this.lookup('webrtcDevices.resolutions.low').toString(),
       presetId: 1,
       constraints: {
@@ -92,9 +92,9 @@ export default Mixin.create({
           height: { max: 240 }
         }
       }
-    });
+    }));
 
-    resolutions.pushObject({
+    resolutions.pushObject(Ember.Object.create({
       label: this.lookup('webrtcDevices.resolutions.medium').toString(),
       presetId: 2,
       constraints: {
@@ -103,9 +103,9 @@ export default Mixin.create({
           height: { max: 480 }
         }
       }
-    });
+    }));
 
-    const hd = {
+    const hd = Ember.Object.create({
       label: this.lookup('webrtcDevices.resolutions.high').toString(),
       presetId: 3,
       constraints: {
@@ -122,12 +122,12 @@ export default Mixin.create({
           }
         }
       }
-    };
+    });
     resolutions.pushObject(hd);
 
     // full hd is disabled by default because very few computers actually support this
     if (this.get('fullHd')) {
-      const fullHd = {
+      resolutions.pushObject(Ember.Object.create({
         label: this.lookup('webrtcDevices.resolutions.fullHd').toString(),
         presetId: 4,
         constraints: {
@@ -136,8 +136,7 @@ export default Mixin.create({
             height: { exact: 1080 }
           }
         }
-      };
-      resolutions.pushObject(fullHd);
+      }));
     }
     return resolutions;
   },
@@ -162,14 +161,14 @@ export default Mixin.create({
         device.label = this.lookup('webrtcDevices.cameraLabel', {number: ++cameraCount}).toString();
       }
       this.set('hasCameraPermission', this.get('hasCameraPermission') || hasLabel);
-      cameras.push(device);
+      cameras.push(Ember.Object.create(device));
     };
     const addMicrophone = (device, hasLabel) => {
       if (!hasLabel) {
         device.label = this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
       }
       this.set('hasMicPermission', this.get('hasMicPermission') || hasLabel);
-      microphones.push(device);
+      microphones.push(Ember.Object.create(device));
     };
     const addOutputDevice = (device, hasLabel) => {
       if (!window.HTMLMediaElement.prototype.hasOwnProperty('setSinkId')) {
@@ -178,7 +177,7 @@ export default Mixin.create({
       if (!hasLabel) {
         device.label = this.lookup('webrtcDevices.outputDeviceLabel', {number: ++outputDeviceCount}).toString();
       }
-      outputDevices.push(device);
+      outputDevices.push(Ember.Object.create(device));
     };
 
     // always add a dummy default for video, since the browser doesn't give us one like microphone
