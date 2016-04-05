@@ -1,14 +1,3 @@
-#### PSA
-
-This addon is still under development and not *quite* ready for use.
-
-TODO:
-* [x] bring in bower deps
-* [x] create dummy application
-* [ ] more unit tests
-* [ ] more integration tests
-* [x] use try:testall to test multiple ember versions
-
 # webrtc-devices
 
 [![Build Status](https://travis-ci.org/MyPureCloud/ember-webrtc-devices.svg?branch=master)](https://travis-ci.org/MyPureCloud/ember-webrtc-devices)
@@ -52,3 +41,11 @@ See Contributing.md
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+## TODO:
+
+* [x] bring in bower deps
+* [x] create dummy application
+* [ ] unit tests for mixin
+* [x] integration tests for component
+* [x] use try:testall to test multiple ember versions
