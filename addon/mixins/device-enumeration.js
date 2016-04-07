@@ -165,7 +165,7 @@ export default Mixin.create({
     };
     const addMicrophone = (device, hasLabel) => {
       if (!hasLabel) {
-        device.label = this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
+        device.label = device.label || this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
       }
       this.set('hasMicPermission', this.get('hasMicPermission') || hasLabel);
       microphones.push(Ember.Object.create(device));
@@ -182,7 +182,7 @@ export default Mixin.create({
 
     // always add a dummy default for video, since the browser doesn't give us one like microphone
     if (webrtcsupport.support) {
-      addCamera(defaultDevice, true);
+      addCamera(defaultDevice, false);
     }
     return window.navigator.mediaDevices.enumerateDevices().then((devices) => {
       if (webrtcsupport.prefix === 'moz' && webrtcsupport.browserVersion < 42) {
