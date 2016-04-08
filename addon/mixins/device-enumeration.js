@@ -22,6 +22,10 @@ export default Mixin.create({
       return true;
     }
 
+    if (!this.get('hasCamera')) {
+      return false;
+    }
+
     // not much we can do here. we can really only guess they haven't given video permissions if they have a camera and have already given mic permissions
     if (!this.get('hasCameraPermission')) {
       return !(this.get('hasMicPermission') && this.get('hasCamera'));
@@ -39,6 +43,10 @@ export default Mixin.create({
     // if old version we just assume they can since there's no way to really know
     if (!this.get('canListDevices')) {
       return true;
+    }
+
+    if (!this.get('hasMicrophone')) {
+      return false;
     }
 
     // not much we can do here. we can really only guess they haven't given audio permissions if they have a mic and have already given camera permissions
@@ -156,18 +164,18 @@ export default Mixin.create({
       label: this.lookup('webrtcDevices.default').toString()
     };
 
-    const addCamera = (device, hasLabel) => {
-      if (!hasLabel) {
-        device.label = this.lookup('webrtcDevices.cameraLabel', {number: ++cameraCount}).toString();
+    const addCamera = (device, hasBrowserLabel) => {
+      if (!hasBrowserLabel) {
+        device.label = device.label || this.lookup('webrtcDevices.cameraLabel', {number: ++cameraCount}).toString();
       }
-      this.set('hasCameraPermission', this.get('hasCameraPermission') || hasLabel);
+      this.set('hasCameraPermission', this.get('hasCameraPermission') || hasBrowserLabel);
       cameras.push(Ember.Object.create(device));
     };
-    const addMicrophone = (device, hasLabel) => {
-      if (!hasLabel) {
+    const addMicrophone = (device, hasBrowserLabel) => {
+      if (!hasBrowserLabel) {
         device.label = device.label || this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
       }
-      this.set('hasMicPermission', this.get('hasMicPermission') || hasLabel);
+      this.set('hasMicPermission', this.get('hasMicPermission') || hasBrowserLabel);
       microphones.push(Ember.Object.create(device));
     };
     const addOutputDevice = (device, hasLabel) => {
