@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "Entradas de video",
+        "cameraSelect": "Seleccionar cámara",
+        "audioSource": "Entrada de audio",
+        "microphoneSelect": "Seleccionar micrófono",
+        "audioDestination": "Salida de audio (altavoces)",
+        "audioDestinationTooltip": "Probar altavoces",
+        "outputSelect": "Seleccionar altavoces",
+        "resolution": "Resolución",
+        "resolutionSelect": "Seleccionar resolución",
+        "resolutions": {
+            "low": "Baja",
+            "medium": "Intermedia",
+            "high": "Alta definición"
+        },
+        "difficulty": "¿Tiene algún problema?",
+        "troubleshoot": "Pruebe su configuración.",
+        "browserMediaSettings": "Para configurar los dispositivos multimedia seleccionados, use el icono de multimedia en la barra de direcciones de su navegador.",
+        "noCameraDetected": "Lamentamos el inconveniente, pero no se puede iniciar el video porque no se ha detectado una cámara.",
+        "noMicrophoneDetected": "Lamentablemente, no se detectó micrófono. Podrá escuchar únicamente.",
+        "cameraLabel": "Cámara {number}",
+        "microphoneLabel": "Micrófono {number}",
+        "outputDeviceLabel": "Altavoz {number}",
+        "default": "Predeterminado"
+    }
 }
