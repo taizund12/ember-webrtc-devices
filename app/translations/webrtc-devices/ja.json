@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "ビデオ ソース",
+        "cameraSelect": "カメラを選択",
+        "audioSource": "オーディオ ソース",
+        "microphoneSelect": "マイクを選択",
+        "audioDestination": "オーディオ再生先 (スピーカー)",
+        "audioDestinationTooltip": "スピーカーのテスト",
+        "outputSelect": "スピーカーの選択",
+        "resolution": "解像度",
+        "resolutionSelect": "解像度を選択",
+        "resolutions": {
+            "low": "低",
+            "medium": "中",
+            "high": "HD"
+        },
+        "difficulty": "問題がありますか？",
+        "troubleshoot": "設定をテストしてください。",
+        "browserMediaSettings": "選択されたメディア デバイスを設定するには、ブラウザーのアドレス バーでメディア アイコンを使用してください。",
+        "noCameraDetected": "申し訳ありません、カメラが認識されないためビデオを開始できません。",
+        "noMicrophoneDetected": "申し訳ありませんが、マイクが検出されなかったので、聴き取りのみ可能です。",
+        "cameraLabel": "カメラ {number}",
+        "microphoneLabel": "マイク {number}",
+        "outputDeviceLabel": "スピーカー {number}",
+        "default": "デフォルト"
+    }
 }

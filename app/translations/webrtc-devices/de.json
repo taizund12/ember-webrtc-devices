@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "Videoquellen",
+        "cameraSelect": "Kamera auswählen",
+        "audioSource": "Audioquelle",
+        "microphoneSelect": "Mikrofon auswählen",
+        "audioDestination": "Audioziel (Lautsprecher)",
+        "audioDestinationTooltip": "Lautsprecher testen",
+        "outputSelect": "Lautsprecher auswählen",
+        "resolution": "Auflösung",
+        "resolutionSelect": "Auflösung auswählen",
+        "resolutions": {
+            "low": "Niedrig",
+            "medium": "Mittel",
+            "high": "HD"
+        },
+        "difficulty": "Haben Sie Schwierigkeitren?",
+        "troubleshoot": "Testen Sie Ihre Einstellungen.",
+        "browserMediaSettings": "Um die ausgewählten Mediengeräte zu konfigurieren, verwenden Sie das Mediensymbol in der Adressleiste Ihres Browsers.",
+        "noCameraDetected": "Video kann leider nicht gestartet werden, da keine Kamera erkannt wurde.",
+        "noMicrophoneDetected": "Leider wurde kein Mikrofon erkannt, daher können Sie nur zuhören.",
+        "cameraLabel": "Kamera {Nummer}",
+        "microphoneLabel": "Mikrofon {Nummer}",
+        "outputDeviceLabel": "Lautsprecher {Nummer}",
+        "default": "Standard"
+    }
 }

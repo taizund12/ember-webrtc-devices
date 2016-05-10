@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "Źródła wideo",
+        "cameraSelect": "Wybierz kamerę",
+        "audioSource": "Źródło dźwięku",
+        "microphoneSelect": "Wybierz mikrofon",
+        "audioDestination": "Docelowe urządzenie audio (głośniki)",
+        "audioDestinationTooltip": "Testuj głośniki",
+        "outputSelect": "Wybierz głośniki",
+        "resolution": "Rozdzielczość",
+        "resolutionSelect": "Wybierz rozdzielczość",
+        "resolutions": {
+            "low": "Niska",
+            "medium": "Średnia",
+            "high": "HD"
+        },
+        "difficulty": "Czy masz problem?",
+        "troubleshoot": "Przetestuj ustawienia.",
+        "browserMediaSettings": "Aby skonfigurować wybrane urządzenia multimedialne, należy użyć ikony mediów w pasku adresu przeglądarki.",
+        "noCameraDetected": "Niestety, nie można zacząć sesji wideo, ponieważ nie wykryto kamery.",
+        "noMicrophoneDetected": "Nie wykryto mikrofonu, możesz tylko słuchać.",
+        "cameraLabel": "Kamera {number}",
+        "microphoneLabel": "Mikrofon {number}",
+        "outputDeviceLabel": "Głośnik {number}",
+        "default": "Domyślne"
+    }
 }
