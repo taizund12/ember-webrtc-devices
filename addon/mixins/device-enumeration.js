@@ -236,6 +236,11 @@ export default Mixin.create({
       return RSVP.Promise.reject('Cannot set null device');
     }
 
+    const outputDevice = this.get('outputDeviceList').findBy('deviceId', device.deviceId);
+    if (!outputDevice) {
+      return RSVP.Promise.reject('Cannot set output device: device not found');
+    }
+
     if (typeof el.setSinkId !== 'undefined') {
       return new RSVP.Promise(function (resolve) {
         if (el.paused) {

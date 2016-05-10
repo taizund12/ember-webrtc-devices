@@ -102,9 +102,9 @@ export default Component.extend(/* LoggerMixin, */{
 
       audio.muted = true;
       audio.currentTime = 0;
-      audio.play();
+      audio.pause();
       this.get('webrtc').setOutputDevice(audio, outputDevice).then(() => {
-        audio.pause();
+        audio.play();
         audio.muted = false;
         this.set('selectedOutputDevice', outputDevice);
       });

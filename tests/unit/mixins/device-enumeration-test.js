@@ -100,3 +100,19 @@ test('canShareAudio should be false if hasCameraPermission is false and hasCamer
   subject.set('hasMicrophone', false);
   assert.equal(subject.get('canShareAudio'), false);
 });
+
+test('setOutputDevice will reject if the device is not found', function (assert) {
+  assert.expect(1);
+
+  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
+  const subject = DeviceEnumerationObject.create();
+
+  subject.set('outputDeviceList', Ember.A([
+    { deviceId: '1234' },
+    { deviceId: '4567' }
+  ]));
+
+  subject.setOutputDevice(null, { deviceId: '0987' }).catch(function (err) {
+    assert.ok(err);
+  });
+});
