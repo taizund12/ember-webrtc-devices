@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "Video kaynakları",
+        "cameraSelect": "Kamera seç",
+        "audioSource": "Ses kaynağı",
+        "microphoneSelect": "Mikrofon seç",
+        "audioDestination": "Ses hedefi (hoparlörler)",
+        "audioDestinationTooltip": "Hoparlörleri test et",
+        "outputSelect": "Hoparlörleri seç",
+        "resolution": "Çözünürlük",
+        "resolutionSelect": "Çözünürlük seç",
+        "resolutions": {
+            "low": "Düşük",
+            "medium": "Orta",
+            "high": "HD"
+        },
+        "difficulty": "Zorluk mu yaşıyorsunuz?",
+        "troubleshoot": "Ayarlarınızı test edin.",
+        "browserMediaSettings": "Seçili medya cihazlarını yapılandırmak için lütfen tarayıcınızın adres çubuğundaki medya simgesini kullanın.",
+        "noCameraDetected": "Kamera algılanmadığından video başlatılamıyor.",
+        "noMicrophoneDetected": "Mikrofon algılanamadığı için sadece dinleyebilirsiniz.",
+        "cameraLabel": "Kamera {number}",
+        "microphoneLabel": "Mikrofon {number}",
+        "outputDeviceLabel": "Hoparlör {number}",
+        "default": "Varsayılan"
+    }
 }
