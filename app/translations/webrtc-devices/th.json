@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "แหล่งที่มาวิดีโอ",
+        "cameraSelect": "เลือกกล้อง",
+        "audioSource": "แหล่งที่มาเสียง",
+        "microphoneSelect": "เลือกไมโครโฟน",
+        "audioDestination": "ปลายทางเสียง (ลำโพง)",
+        "audioDestinationTooltip": "ทดสอบลำโพง",
+        "outputSelect": "เลือกลำโพง",
+        "resolution": "ความละเอียด",
+        "resolutionSelect": "เลือกความละเอียด",
+        "resolutions": {
+            "low": "ต่ำ",
+            "medium": "ปานกลาง",
+            "high": "HD"
+        },
+        "difficulty": "ประสบปัญหาหรือไม่",
+        "troubleshoot": "ทดสอบการตั้งค่าของคุณ",
+        "browserMediaSettings": "ในการกำหนดค่าอุปกรณ์มีเดียที่เลือก โปรดใช้ไอคอนมีเดียในแถบที่อยู่ของเบราเซอร์คุณ",
+        "noCameraDetected": "ขออภัย ไม่สามารถเริ่มวิดีโอได้เนื่องจากไม่พบกล้อง",
+        "noMicrophoneDetected": "ขออภัย ไม่พบไมโครโฟน ดังนั้นคุณจึงฟังได้อย่างเดียว",
+        "cameraLabel": "กล้อง {number}",
+        "microphoneLabel": "ไมโครโฟน {number}",
+        "outputDeviceLabel": "ลำโพง {number}",
+        "default": "ค่าเริ่มต้น"
+    }
 }
