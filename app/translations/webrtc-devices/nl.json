@@ -1,12 +1,12 @@
 {
     "webrtcDevices": {
         "videoSource": "Videobronnen",
-        "cameraSelect": "Camera selecteren",
+        "cameraSelect": "Selecteer camera",
         "audioSource": "Audiobron",
-        "microphoneSelect": "Microfoon selecteren",
+        "microphoneSelect": "Selecteer microfoon",
         "audioDestination": "Audioapparaat (speakers)",
         "audioDestinationTooltip": "Speakers testen",
-        "outputSelect": "Speakers selecteren",
+        "outputSelect": "Selecteer speakers",
         "resolution": "Resolutie",
         "resolutionSelect": "Resolutie selecteren",
         "resolutions": {
