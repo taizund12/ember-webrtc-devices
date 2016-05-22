@@ -116,6 +116,10 @@ export default Component.extend(/* LoggerMixin, */{
       if (this.get('selectedResolution.presetId') !== id) {
         this.set('selectedResolution', this.get('webrtc.resolutionList').findBy('presetId', id));
       }
+    },
+
+    changeFilter (filter) {
+      this.set('selectedFilter', filter);
     }
   }
 });

@@ -36,10 +36,10 @@
                         {{#x-select
                            id=(concat elementId '-filter-select')
                            value=selectedFilter
-                           action="(action (mut selectedFilter))"
+                           action="changeFilter"
                            class="form-control filter-select"}}
-                            {{#each advancedOptions as |option|}}
-                                {{#x-option value=option}}{{option}}{{/x-option}}
+                            {{#each advancedOptions as |filter|}}
+                                {{#x-option value=filter}}{{filter}}{{/x-option}}
                             {{/each}}
                         {{/x-select}}
                     </div>
