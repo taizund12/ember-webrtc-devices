@@ -4,7 +4,7 @@
 import Ember from 'ember';
 import layout from './template';
 
-const {computed, Component, inject, run} = Ember;
+const {computed, RSVP, Component, inject, run} = Ember;
 
 export default Component.extend(/* LoggerMixin, */{
   layout: layout,
@@ -102,10 +102,11 @@ export default Component.extend(/* LoggerMixin, */{
 
       audio.muted = true;
       audio.currentTime = 0;
-      audio.play().then(() => {
+      const playPromise = audio.play() || RSVP.resolve();
+      playPromise.then(() => {
         return this.get('webrtc').setOutputDevice(audio, outputDevice);
       }).then(() => {
-        return audio.pause();
+        return audio.pause() || RSVP.resolve();
       }).then(() => {
         audio.muted = false;
         this.set('selectedOutputDevice', outputDevice);
