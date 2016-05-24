@@ -1,6 +1,6 @@
 {
   "name": "ember-webrtc-devices",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Enumerating and selecting media devices from the browser as an ember addon",
   "directories": {
     "doc": "doc",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "semistandard && ember test"
+    "test": "echo \"Linting with semistandard. This may take a minute...\" && semistandard && ember test"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
   "engines": {
