@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "semistandard && ember test"
+    "test": "echo \"Linting with semistandard. This may take a minute...\" && semistandard && ember test"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
   "engines": {
