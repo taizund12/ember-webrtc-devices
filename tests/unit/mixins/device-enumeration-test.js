@@ -15,6 +15,27 @@ test('hasCamera should be false if there are no cameras with non-default id', fu
   const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
   const subject = DeviceEnumerationObject.create();
   assert.equal(subject.get('hasCamera'), false);
+  subject.get('cameraList').pushObject({
+    deviceId: 'default',
+    label: 'Default'
+  });
+  assert.equal(subject.get('hasCamera'), false);
+  subject.get('cameraList').pushObject({
+    deviceId: 'asdfFoobar',
+    label: 'Cutiebot Jr'
+  });
+  assert.equal(subject.get('hasCamera'), true);
+});
+
+test('hasMicrophone should be true if there is a microphone, even if it has a default id', function (assert) {
+  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
+  const subject = DeviceEnumerationObject.create();
+  assert.equal(subject.get('hasMicrophone'), false);
+  subject.get('microphoneList').pushObject({
+    deviceId: 'default',
+    label: 'Default'
+  });
+  assert.equal(subject.get('hasMicrophone'), true);
 });
 
 test('canShareVideo should be false if hasCamera is false', function (assert) {

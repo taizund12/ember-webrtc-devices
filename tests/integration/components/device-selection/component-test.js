@@ -269,9 +269,8 @@ test('it should change resolution', function (assert) {
     const select = this.$('select[id*="-resolution-select"]');
     assert.equal(select.val(), mockResolutions[0].presetId);
 
-    var self = this;
     return fillIn('select[id*="-resolution-select"]', mockResolutions[1].presetId).then(() => {
-      assert.equal(self.get('resolution'), mockResolutions[1]);
+      assert.equal(this.get('resolution'), mockResolutions[1]);
     });
   });
 });
