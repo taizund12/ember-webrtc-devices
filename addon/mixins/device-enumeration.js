@@ -36,9 +36,7 @@ export default Mixin.create({
   // mic and audio stuff
   hasMicPermission: false,
   microphoneList: Ember.A(),
-  hasMicrophone: computed('microphoneList.[]', function () {
-    return this.get('microphoneList.length') > 0;
-  }),
+  hasMicrophone: computed.notEmpty('microphoneList'),
   canShareAudio: computed('canListDevices', 'hasCameraPermission', 'hasMicrophone', 'hasMicPermission', function () {
     // if old version we just assume they can since there's no way to really know
     if (!this.get('canListDevices')) {
