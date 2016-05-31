@@ -12,8 +12,8 @@ export default Mixin.create({
 
   // camera and video stuff
   hasCameraPermission: false,
-  cameraList: [],
-  hasCamera: computed('cameraList', function () {
+  cameraList: Ember.A(),
+  hasCamera: computed('cameraList.[]', function () {
     return !!_.find(this.get('cameraList'), (camera) => camera.deviceId !== 'default');
   }),
   canShareVideo: computed('canListDevices', 'hasCameraPermission', 'hasCamera', 'hasMicPermission', function () {
@@ -35,10 +35,8 @@ export default Mixin.create({
 
   // mic and audio stuff
   hasMicPermission: false,
-  microphoneList: [],
-  hasMicrophone: computed('microphoneList', function () {
-    return !!_.find(this.get('microphoneList'), (mic) => mic.deviceId !== 'default');
-  }),
+  microphoneList: Ember.A(),
+  hasMicrophone: computed.notEmpty('microphoneList'),
   canShareAudio: computed('canListDevices', 'hasCameraPermission', 'hasMicrophone', 'hasMicPermission', function () {
     // if old version we just assume they can since there's no way to really know
     if (!this.get('canListDevices')) {
