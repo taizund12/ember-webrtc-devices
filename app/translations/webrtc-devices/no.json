@@ -1,27 +1,27 @@
 {
-  "webrtcDevices": {
-    "videoSource": "Video sources",
-    "cameraSelect": "Select camera",
-    "audioSource": "Audio source",
-    "microphoneSelect": "Select microphone",
-    "audioDestination": "Audio destination (speakers)",
-    "audioDestinationTooltip": "Test speakers",
-    "outputSelect": "Select speakers",
-    "resolution": "Resolution",
-    "resolutionSelect": "Select resolution",
-    "resolutions": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "HD"
-    },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
-    "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
-    "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
-    "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
-    "cameraLabel": "Camera {number}",
-    "microphoneLabel": "Microphone {number}",
-    "outputDeviceLabel": "Speaker {number}",
-    "default": "Default"
-  }
+    "webrtcDevices": {
+        "videoSource": "Videokilder",
+        "cameraSelect": "Velg kamera",
+        "audioSource": "Lydkilde",
+        "microphoneSelect": "Velg mikrofon",
+        "audioDestination": "Lydmål (høyttalere)",
+        "audioDestinationTooltip": "Test høyttalere",
+        "outputSelect": "Velg høyttalere",
+        "resolution": "Løsning",
+        "resolutionSelect": "Velg løsning",
+        "resolutions": {
+            "low": "Lav",
+            "medium": "Middels",
+            "high": "HD"
+        },
+        "difficulty": "Har du problemer?",
+        "troubleshoot": "Test innstillingene.",
+        "browserMediaSettings": "Bruk medieikonet i nettleserens adresselinje til å konfigurere de valgte medieenhetene.",
+        "noCameraDetected": "Beklager, video kan ikke startes fordi det ikke ble påvist noe kamera.",
+        "noMicrophoneDetected": "Beklager, men siden ingen mikrofon ble påvist, kan du bare lytte.",
+        "cameraLabel": "Kamera {number}",
+        "microphoneLabel": "Mikrofon {number}",
+        "outputDeviceLabel": "Høyttaler {number}",
+        "default": "Standard"
+    }
 }
