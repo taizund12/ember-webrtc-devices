@@ -71,16 +71,28 @@ export default Mixin.create({
 
   canShareScreen: false,
 
+  enumerationTimer: null,
+
   // Returns a promise which resolves when all devices have been enumerated and loaded
   init () {
     this._super(...arguments);
-    run.next(this, function () {
+    const timer = run.next(this, function () {
       this.enumerateDevices();
       this.enumerateResolutions();
     });
+    this.set('enumerationTimer', timer);
     this.set('canShareScreen', webrtcsupport.supportScreenSharing);
 
     this.lookup = this.lookup || ((key) => key);
+  },
+
+  willDestroy () {
+    const timer = this.get('enumerationTimer');
+    if (timer) {
+      run.cancel(timer);
+    }
+
+    this._super(...arguments);
   },
 
   updateDefaultDevices (/* devices */) {
