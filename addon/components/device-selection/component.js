@@ -34,12 +34,16 @@ export default Component.extend(/* LoggerMixin, */{
           this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
         });
       }
-
-      this.send('changeCamera', this.get('selectedCamera.deviceId'));
-      this.send('changeMicrophone', this.get('selectedMicrophone.deviceId'));
-      this.send('changeResolution', this.get('selectedResolution.presetId'));
-      this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
     });
+  },
+
+  didReceiveAttrs () {
+    this._super(...arguments);
+
+    this.send('changeCamera', this.get('selectedCamera.deviceId'));
+    this.send('changeMicrophone', this.get('selectedMicrophone.deviceId'));
+    this.send('changeResolution', this.get('selectedResolution.presetId'));
+    this.send('changeOutputDevice', this.get('selectedOutputDevice.deviceId'));
   },
 
   willDestroyElement () {
