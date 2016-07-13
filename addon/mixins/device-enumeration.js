@@ -1,8 +1,18 @@
-/* global webrtcsupport, _ */
+/* global _ */
 
 import Ember from 'ember';
 
 const { Mixin, RSVP, computed, run } = Ember;
+
+const UA = window.navigator.userAgent.toLowerCase();
+const IS_CHROME = /chrome/.test(UA) || /chromium/.test(UA);
+const IS_FIREFOX = /mozilla/.test(UA) && !(/webkit/.test(UA));
+let BROWSER_VERSION;
+if (IS_CHROME) {
+  BROWSER_VERSION = UA.match(/chrom(e|ium)/) && parseInt(UA.match(/chrom(e|ium)\/([0-9]+)\./)[2], 10);
+} else if (IS_FIREFOX) {
+  BROWSER_VERSION = parseInt(UA.match(/firefox\/([0-9]+)\./)[1], 10);
+}
 
 export default Mixin.create({
   // options
@@ -59,7 +69,14 @@ export default Mixin.create({
   }),
 
   callCapable: computed('noVideoHardware', function () {
-    if (!webrtcsupport.support || !webrtcsupport.supportWebAudio) {
+    const videoEl = document.createElement('video');
+    const PC = window.RTCPeerConnection;
+    const gUM = window.navigator && window.navigator.mediaDevices && window.navigator.mediaDevices.getUserMedia;
+    const supportVp8 = videoEl && videoEl.canPlayType && videoEl.canPlayType('video/webm; codecs="vp8", vorbis') === 'probably';
+    const supportWebAudio = window.AudioContext && window.AudioContext.prototype.createMediaStreamSource;
+    const support = !!(PC && gUM && supportVp8 && supportWebAudio);
+
+    if (!support) {
       return false;
     }
 
@@ -69,7 +86,7 @@ export default Mixin.create({
   outputDeviceList: Ember.A(),
   resolutionList: Ember.A(),
 
-  canShareScreen: false,
+  canShareScreen: computed.reads('callCapable'),
 
   enumerationTimer: null,
 
@@ -81,7 +98,6 @@ export default Mixin.create({
       this.enumerateResolutions();
     });
     this.set('enumerationTimer', timer);
-    this.set('canShareScreen', webrtcsupport.supportScreenSharing);
 
     this.lookup = this.lookup || ((key) => key);
   },
@@ -199,11 +215,11 @@ export default Mixin.create({
     };
 
     // always add a dummy default for video, since the browser doesn't give us one like microphone
-    if (webrtcsupport.support) {
+    if (this.get('callCapable')) {
       addCamera(defaultDevice, false);
     }
     return window.navigator.mediaDevices.enumerateDevices().then((devices) => {
-      if (webrtcsupport.prefix === 'moz' && webrtcsupport.browserVersion < 42) {
+      if (IS_FIREFOX && BROWSER_VERSION < 42) {
         this.set('canListDevices', false);
         addMicrophone(defaultDevice);
       } else {
