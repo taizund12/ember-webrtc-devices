@@ -20,7 +20,7 @@ module.exports = {
     app.import(app.bowerDirectory + '/cheet.js/cheet.min.js');
 
     // Fix when https://github.com/webrtc/adapter/issues/206
-    app.import(app.bowerDirectory + '/webrtc-adapter/adapter-1.0.4.js');
+    app.import(app.bowerDirectory + '/webrtc-adapter/adapter-1.4.0.js');
   },
   treeForApp: function (tree) {
     const trees = [tree];
