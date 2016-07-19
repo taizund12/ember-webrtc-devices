@@ -10,7 +10,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "node_modules/.bin/semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && ember test",
-    "gh-pages": "echo \"Building for gh-pages. This may take a few minutes...\" && ember github-pages:commit --message \"Rebuild gh-pages\" && git push --no-verify gh-pages:gh-pages"
+    "gh-pages": "echo \"Building for gh-pages. This may take a few minutes...\" && ember github-pages:commit --message \"Rebuild gh-pages\" && git push origin --no-verify gh-pages:gh-pages"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
   "engines": {
