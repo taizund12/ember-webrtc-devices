@@ -5,8 +5,8 @@ import Ember from 'ember';
 const { Mixin, RSVP, computed, run } = Ember;
 
 const UA = window.navigator.userAgent.toLowerCase();
-const IS_CHROME = /chrome/.test(UA) || /chromium/.test(UA);
-const IS_FIREFOX = /mozilla/.test(UA) && !(/webkit/.test(UA));
+const IS_CHROME = !!window && !!window.chrome && !!window.chrome.webstore;
+const IS_FIREFOX = window && typeof InstallTrigger !== 'undefined';
 let BROWSER_VERSION;
 if (IS_CHROME) {
   BROWSER_VERSION = UA.match(/chrom(e|ium)/) && parseInt(UA.match(/chrom(e|ium)\/([0-9]+)\./)[2], 10);
