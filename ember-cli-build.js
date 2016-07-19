@@ -5,6 +5,9 @@ module.exports = function (defaults) {
   var app = new EmberAddon(defaults, {
     'ember-cli-qunit': {
       useLintTree: false // we use standard instead
+    },
+    finterprint: {
+      enabled: false
     }
   // Add options here
   });
