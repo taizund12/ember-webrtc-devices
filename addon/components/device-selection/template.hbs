@@ -73,7 +73,7 @@
                 </div>
             </div>
         {{/if}}
-        {{#if (and webrtc.outputDeviceList.length audio)}}
+        {{#if audio}}
             <div class="entry-row">
                 <div class="entry-label">
                     <label for="{{concat elementId '-outputDevice-select'}}">
@@ -91,15 +91,19 @@
                     </audio>
                 </div>
                 <div class="entry-values">
-                    {{#x-select
-                       id=(concat elementId '-speakers-select')
-                       value=selectedOutputDeviceId
-                       action="changeOutputDevice"
-                       class="form-control speakers-select"}}
-                        {{#each webrtc.outputDeviceList as |outputDevice|}}
-                            {{#x-option value=outputDevice.deviceId}}{{outputDevice.label}}{{/x-option}}
-                        {{/each}}
-                    {{/x-select}}
+                    {{#if webrtc.outputDeviceList.length}}
+                        {{#x-select
+                           id=(concat elementId '-speakers-select')
+                           value=selectedOutputDeviceId
+                           action="changeOutputDevice"
+                           class="form-control speakers-select"}}
+                            {{#each webrtc.outputDeviceList as |outputDevice|}}
+                                {{#x-option value=outputDevice.deviceId}}{{outputDevice.label}}{{/x-option}}
+                            {{/each}}
+                        {{/x-select}}
+                    {{else}}
+                      <span class="system-default-message">{{t "webrtcDevices.outputDeviceSystemDefault"}}</span>
+                    {{/if}}
                 </div>
             </div>
         {{/if}}

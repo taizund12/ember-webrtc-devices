@@ -22,6 +22,7 @@
     "cameraLabel": "Camera {number}",
     "microphoneLabel": "Microphone {number}",
     "outputDeviceLabel": "Speaker {number}",
+    "outputDeviceSystemDefault": "System default",
     "default": "Default"
   }
 }
