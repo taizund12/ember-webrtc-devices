@@ -53,7 +53,7 @@ const renderDefault = function () {
 };
 
 const hasAudioSupport = function () {
-  const audio = document.createElement('source');
+  const audio = document.createElement('audio');
   return !!audio.play;
 };
 
@@ -217,6 +217,19 @@ test('it should start with specified outputDevice', function (assert) {
 
     assert.equal(this.$('select[id*="-speakers-select"]').val(), mockDevices[1].deviceId);
     assert.equal(this.$('select[id*="-speakers-select"] option:selected').text(), mockDevices[1].label);
+  });
+});
+
+test('it should show a system default message if there are no output devices listed', function (assert) {
+  return Ember.run(this, function () {
+    if (!hasAudioSupport()) {
+      return expect(0);
+    }
+
+    this.set('webrtc.outputDeviceList', []);
+    this.renderDefault();
+
+    assert.equal(this.$('.system-default-message').length, 1);
   });
 });
 
