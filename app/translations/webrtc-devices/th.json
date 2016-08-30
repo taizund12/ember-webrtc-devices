@@ -22,6 +22,7 @@
         "cameraLabel": "กล้อง {number}",
         "microphoneLabel": "ไมโครโฟน {number}",
         "outputDeviceLabel": "ลำโพง {number}",
+        "outputDeviceSystemDefault": "ค่าเริ่มต้นของระบบ",
         "default": "ค่าเริ่มต้น"
     }
 }
