@@ -22,6 +22,7 @@
         "cameraLabel": "Videocamera {number}",
         "microphoneLabel": "Microfono {number}",
         "outputDeviceLabel": "Altoparlante {number}",
+        "outputDeviceSystemDefault": "Valori predefiniti del sistema",
         "default": "Predefinito"
     }
 }
