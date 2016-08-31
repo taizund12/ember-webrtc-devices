@@ -22,6 +22,7 @@
         "cameraLabel": "カメラ {number}",
         "microphoneLabel": "マイク {number}",
         "outputDeviceLabel": "スピーカー {number}",
+        "outputDeviceSystemDefault": "システムのデフォルト",
         "default": "デフォルト"
     }
 }
