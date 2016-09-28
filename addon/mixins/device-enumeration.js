@@ -68,18 +68,28 @@ export default Mixin.create({
     return !this.get('canShareAudio') && !this.get('canShareVideo');
   }),
 
-  callCapable: computed('noVideoHardware', function () {
-    const videoEl = document.createElement('video');
+  callCapable: computed.and('audioCallCapable', 'videoCallCapable'),
+
+  audioCallCapable: computed('canShareAudio', function () {
     const PC = window.RTCPeerConnection;
     const gUM = window.navigator && window.navigator.mediaDevices && window.navigator.mediaDevices.getUserMedia;
-    const supportVp8 = videoEl && videoEl.canPlayType && videoEl.canPlayType('video/webm; codecs="vp8", vorbis') === 'probably';
     const supportWebAudio = window.AudioContext && window.AudioContext.prototype.createMediaStreamSource;
-    const support = !!(PC && gUM && supportVp8 && supportWebAudio);
+    const support = !!(PC && gUM && supportWebAudio);
 
-    if (!support) {
+    return support && this.get('canShareAudio');
+  }),
+
+  videoCallCapable: computed('noVideoHardware', 'audio', function () {
+    const audioCallCapable = this.get('audioCallCapable');
+    if (!audioCallCapable) {
       return false;
     }
 
+    const videoEl = document.createElement('video');
+    const supportVp8 = videoEl && videoEl.canPlayType && videoEl.canPlayType('video/webm; codecs="vp8", vorbis') === 'probably';
+    if (!supportVp8) {
+      return false;
+    }
     return !this.get('noVideoHardware');
   }),
 
