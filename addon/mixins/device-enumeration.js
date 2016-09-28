@@ -68,18 +68,20 @@ export default Mixin.create({
     return !this.get('canShareAudio') && !this.get('canShareVideo');
   }),
 
-  callCapable: computed(function () {
+  callCapable: computed.and('audioCallCapable', 'videoCallCapable'),
+
+  audioCallCapable: computed('canShareAudio', function () {
     const PC = window.RTCPeerConnection;
     const gUM = window.navigator && window.navigator.mediaDevices && window.navigator.mediaDevices.getUserMedia;
     const supportWebAudio = window.AudioContext && window.AudioContext.prototype.createMediaStreamSource;
     const support = !!(PC && gUM && supportWebAudio);
 
-    return support;
+    return support && this.get('canShareAudio');
   }),
 
-  videoCallCapable: computed('noVideoHardware', 'callCapable', function () {
-    const callCapable = this.get('callCapable');
-    if (!callCapable) {
+  videoCallCapable: computed('noVideoHardware', 'audio', function () {
+    const audioCallCapable = this.get('audioCallCapable');
+    if (!audioCallCapable) {
       return false;
     }
 
@@ -94,7 +96,7 @@ export default Mixin.create({
   outputDeviceList: Ember.A(),
   resolutionList: Ember.A(),
 
-  canShareScreen: computed.reads('videoCallCapable'),
+  canShareScreen: computed.reads('callCapable'),
 
   enumerationTimer: null,
 
