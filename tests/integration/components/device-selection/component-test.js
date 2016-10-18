@@ -19,9 +19,7 @@ QUnit.testStart(function () {
 });
 
 const webrtcService = Ember.Service.extend({
-  canShareAudio: true,
   canListDevices: true,
-  canShareVideo: true,
   cameraList: Ember.A(),
   microphoneList: Ember.A(),
   outputDeviceList: Ember.A(),
@@ -48,6 +46,8 @@ const renderDefault = function () {
           selectedResolution=resolution
           video=video
           audio=audio
+          audioCallCapable=audioCallCapable
+          videoCallCapable=videoCallCapable
           }}
     `);
 };
@@ -76,6 +76,8 @@ moduleForComponent('device-selection', 'Integration | Component | device selecti
     this.set('outputDevice', null);
     this.set('video', true);
     this.set('audio', true);
+    this.set('audioCallCapable', true);
+    this.set('videoCallCapable', true);
   }
 });
 
