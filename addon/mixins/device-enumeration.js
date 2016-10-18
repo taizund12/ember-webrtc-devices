@@ -26,57 +26,25 @@ export default Mixin.create({
   hasCamera: computed('cameraList.[]', function () {
     return !!_.find(this.get('cameraList'), (camera) => camera.deviceId !== 'default');
   }),
-  canShareVideo: computed('canListDevices', 'hasCameraPermission', 'hasCamera', 'hasMicPermission', function () {
-    // if old version we just assume they can since there's no way to really know
-    if (!this.get('canListDevices')) {
-      return true;
-    }
-
-    if (!this.get('hasCamera')) {
-      return false;
-    }
-
-    // not much we can do here. we can really only guess they haven't given video permissions if they have a camera and have already given mic permissions
-    if (!this.get('hasCameraPermission')) {
-      return !(this.get('hasMicPermission') && this.get('hasCamera'));
-    }
-    return true;
-  }),
 
   // mic and audio stuff
   hasMicPermission: false,
   microphoneList: Ember.A(),
   hasMicrophone: computed.notEmpty('microphoneList'),
-  canShareAudio: computed('canListDevices', 'hasCameraPermission', 'hasMicrophone', 'hasMicPermission', function () {
-    // if old version we just assume they can since there's no way to really know
-    if (!this.get('canListDevices')) {
-      return true;
-    }
 
-    if (!this.get('hasMicrophone')) {
-      return false;
-    }
-
-    // not much we can do here. we can really only guess they haven't given audio permissions if they have a mic and have already given camera permissions
-    if (!this.get('hasMicPermission')) {
-      return !(this.get('hasCameraPermission') && this.get('hasMicrophone'));
-    }
-    return true;
-  }),
-
-  noVideoHardware: computed('canShareAudio', 'canShareVideo', function () {
-    return !this.get('canShareAudio') && !this.get('canShareVideo');
+  noVideoHardware: computed('canListDevices', 'cameraList', function () {
+    return this.get('canListDevices') && this.get('cameraList').length === 0;
   }),
 
   callCapable: computed.and('audioCallCapable', 'videoCallCapable'),
 
-  audioCallCapable: computed('canShareAudio', function () {
+  audioCallCapable: computed(function () {
     const PC = window.RTCPeerConnection;
     const gUM = window.navigator && window.navigator.mediaDevices && window.navigator.mediaDevices.getUserMedia;
     const supportWebAudio = window.AudioContext && window.AudioContext.prototype.createMediaStreamSource;
     const support = !!(PC && gUM && supportWebAudio);
 
-    return support && this.get('canShareAudio');
+    return support;
   }),
 
   videoCallCapable: computed('noVideoHardware', 'audio', function () {

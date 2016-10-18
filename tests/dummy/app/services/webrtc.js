@@ -3,9 +3,7 @@ import DeviceEnumerationMixin from 'webrtc-devices/mixins/device-enumeration';
 
 export default Ember.Service.extend(DeviceEnumerationMixin, {
   intl: Ember.inject.service(),
-  canShareAudio: true,
   canListDevices: true,
-  canShareVideo: true,
   cameraList: Ember.A(),
   microphoneList: Ember.A(),
   outputDeviceList: Ember.A(),

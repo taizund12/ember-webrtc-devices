@@ -22,9 +22,6 @@ export default Component.extend(/* LoggerMixin, */{
 
   webrtc: inject.service(),
 
-  canShareAudio: computed.reads('webrtc.canShareAudio'),
-  canShareVideo: computed.reads('webrtc.canShareVideo'),
-
   didInsertElement () {
     this._super(...arguments);
 
