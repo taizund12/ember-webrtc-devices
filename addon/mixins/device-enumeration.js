@@ -266,6 +266,10 @@ export default Mixin.create({
   },
 
   setDefaultOutputDevice (el) {
-    return this.setOutputDevice(el, this.get('defaultOutputDevice'));
+    const device = this.get('defaultOutputDevice');
+    if (device) {
+      return this.setOutputDevice(el, this.get('defaultOutputDevice'));
+    }
+    return Promise.resolve();
   }
 });
