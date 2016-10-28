@@ -270,6 +270,6 @@ export default Mixin.create({
     if (device) {
       return this.setOutputDevice(el, this.get('defaultOutputDevice'));
     }
-    return Promise.resolve();
+    return RSVP.Promise.resolve();
   }
 });
