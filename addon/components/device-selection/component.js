@@ -22,6 +22,9 @@ export default Component.extend(/* LoggerMixin, */{
 
   webrtc: inject.service(),
 
+  audioCallCapable: computed.reads('webrtc.audioCallCapable'),
+  videoCallCapable: computed.reads('webrtc.videoCallCapable'),
+
   didInsertElement () {
     this._super(...arguments);
 
