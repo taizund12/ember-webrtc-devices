@@ -10,7 +10,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && ember test",
-    "gh-pages": "echo \"Building for gh-pages. This may take a few minutes...\" && ember github-pages:commit --message \"Rebuild gh-pages\" && git push origin --no-verify gh-pages:gh-pages"
+    "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
   "engines": {
