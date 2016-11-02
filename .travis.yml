@@ -36,3 +36,6 @@ install:
 
 script:
   - ember try $EMBER_TRY_SCENARIO test
+
+after_success:
+  - npm run gh-pages
