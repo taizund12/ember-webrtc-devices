@@ -10,6 +10,9 @@
 
 bower.json.ember-try
 
+# Travis CI
+travis-phantomjs/
+
 # misc
 /.sass-cache
 /connect.lock
