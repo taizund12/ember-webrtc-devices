@@ -1,0 +1,29 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/tmp
+/addon
+/app
+/public
+/vendor
+/tests
+
+# dependencies
+/node_modules
+/bower_components
+
+bower.json.ember-try
+
+# Travis CI
+travis-phantomjs/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/.vscode
+/.idea
+

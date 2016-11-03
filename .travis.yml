@@ -10,10 +10,13 @@ cache:
     - node_modules
 
 env:
-  - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
+  matrix:
+    - EMBER_TRY_SCENARIO=default
+    - EMBER_TRY_SCENARIO=ember-release
+    - EMBER_TRY_SCENARIO=ember-beta
+    - EMBER_TRY_SCENARIO=ember-canary
+  global:
+    - secure: "VGCjcxRyOxZBdz1sl+avzdVRou+Zf52r+yXJXnEa5i66tRgyUaXHHMXDebWTvyFBfmu8893+RSm7Duarm8m5kumquf5NH9G5JXmwaBA+lsAsx8CmWKIpQIbk3Da9hg5fGqVKUjQVu6Pn/xfZP4HfvJ9jwSaOWq6S8zgep1FSriUPo2BD6BP7ihJWisg/LYx6mUdW236qxIG17bYc0oG1epOAxhnxymMxSRQx/+LYfM8xHDglkND4n9ERtUiOFFK06RZX7JcRqouKN1GvoaLlg74GCExCmUmgwbx86hDvhfvjRkbhLgWm8/B+BO3w0O2PstCZ45h1UQfgzJ3kyC/EWny/JM8xFvaBtMxNEsuYLUm7XTnrl9aYPdDH1t6gT/bwr/V1K4vul0kb7ZKUBajmL9rbGvUBklVNuEI7u23RF0TF84qRKqJy8Tr7ClZ7Gl6i9P/kLVRao9c/Cx90Y84hkp+Mo8LHWtl7MZJVYXkABmMh8nOlatbUJbRo0Jqjv6s+94v+aX6kBs5UmwC3Fj6Nr13WKvw7fry5rN74KlKtu+fIxPRTtRv1tDprGOOgJWKZ3hMwb/AAYgEtRH6mmjxBDrOPlGhpjRnLJYK4nsTXOgQJwWsdOdiIwXn6AQgZROb0tusiKemt7SSlZeS6mLJkYFYJ07md1CQLpXaGzFG0ym8="
 
 matrix:
   fast_finish: true
@@ -37,5 +40,6 @@ install:
 script:
   - ember try $EMBER_TRY_SCENARIO test
 
-after_success:
-  - npm run gh-pages
+after_script:
+  - npm run build
+  - ".travis/publish-gh-pages.sh"
