@@ -73,28 +73,8 @@ export default Component.extend(/* LoggerMixin, */{
 
     playTestSound () {
       const audio = this.$('.preview-audio')[0];
-      audio.currentTime = 0;
-      audio.play();
-    },
 
-    changeCamera (id) {
-      if (this.get('selectedCamera.deviceId') !== id) {
-        this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id));
-      }
-    },
-
-    changeMicrophone (id) {
-      if (this.get('selectedMicrophone.deviceId') !== id) {
-        this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id));
-      }
-    },
-
-    changeOutputDevice (id) {
-      if (this.get('selectedOutputDevice.deviceId') === id) {
-        return;
-      }
-      const outputDevice = this.get('webrtc.outputDeviceList').findBy('deviceId', id);
-      const audio = this.$('.preview-audio')[0];
+      const outputDevice = this.get('selectedOutputDevice');
 
       if (!audio || !outputDevice) {
         return;
@@ -113,8 +93,27 @@ export default Component.extend(/* LoggerMixin, */{
         return audio.pause() || RSVP.resolve();
       }).then(() => {
         audio.muted = false;
-        this.set('selectedOutputDevice', outputDevice);
+        audio.currentTime = 0;
+        audio.play();
       });
+    },
+
+    changeCamera (id) {
+      if (this.get('selectedCamera.deviceId') !== id) {
+        this.set('selectedCamera', this.get('webrtc.cameraList').findBy('deviceId', id));
+      }
+    },
+
+    changeMicrophone (id) {
+      if (this.get('selectedMicrophone.deviceId') !== id) {
+        this.set('selectedMicrophone', this.get('webrtc.microphoneList').findBy('deviceId', id));
+      }
+    },
+
+    changeOutputDevice (id) {
+      if (this.get('selectedOutputDevice.deviceId') !== id) {
+        this.set('selectedOutputDevice', this.get('webrtc.outputDeviceList').findBy('deviceId', id));
+      }
     },
 
     changeResolution (id) {
