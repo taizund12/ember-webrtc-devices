@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && ember test",
+    "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && npm run coverage",
     "coverage": "COVERAGE=true ember test",
     "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
