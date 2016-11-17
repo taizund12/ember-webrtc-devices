@@ -9,7 +9,10 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && ember test",
+    "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && npm run coverage",
+    "check:coverage": "./scripts/checkCodeCoverage.sh",
+    "posttest": "npm run check:coverage -s",
+    "coverage": "COVERAGE=true ember test",
     "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
@@ -23,6 +26,7 @@
     "ember-ajax": "0.7.1",
     "ember-cli": "2.3.0",
     "ember-cli-app-version": "^1.0.0",
+    "ember-cli-code-coverage": "0.3.8",
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-github-pages": "0.0.8",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
@@ -41,6 +45,7 @@
     "ember-truth-helpers": "^1.2.0",
     "ember-try": "^0.1.2",
     "emberx-select": "2.1.0",
+    "istanbul": "^0.4.5",
     "loader.js": "^4.0.0",
     "pre-push": "^0.1.1",
     "semistandard": "^7.0.5"
