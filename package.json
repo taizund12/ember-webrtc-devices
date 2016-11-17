@@ -10,6 +10,8 @@
     "build": "ember build",
     "start": "ember server",
     "test": "semistandard addon/**/*.js app/**/*.js blueprints/**/*.js tests/**/*.js && npm run coverage",
+    "check:coverage": "./scripts/checkCodeCoverage.sh",
+    "posttest": "npm run check:coverage -s",
     "coverage": "COVERAGE=true ember test",
     "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
@@ -43,6 +45,7 @@
     "ember-truth-helpers": "^1.2.0",
     "ember-try": "^0.1.2",
     "emberx-select": "2.1.0",
+    "istanbul": "^0.4.5",
     "loader.js": "^4.0.0",
     "pre-push": "^0.1.1",
     "semistandard": "^7.0.5"
