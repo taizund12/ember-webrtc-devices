@@ -49,7 +49,7 @@ test('setOutputDevice will reject if the device is not found', function (assert)
     { deviceId: '4567' }
   ]));
 
-  subject.setOutputDevice(null, { deviceId: '0987' }).catch(function (err) {
+  return subject.setOutputDevice(null, { deviceId: '0987' }).catch(function (err) {
     assert.ok(err);
   });
 });

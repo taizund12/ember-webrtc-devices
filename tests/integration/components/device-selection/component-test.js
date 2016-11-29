@@ -1,4 +1,4 @@
-/* global QUnit, fillIn, expect */
+/* global QUnit, fillIn */
 
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
@@ -204,7 +204,7 @@ test('it should start with specified mic', function (assert) {
 test('it should start with specified outputDevice', function (assert) {
   return Ember.run(this, function () {
     if (!hasAudioSupport()) {
-      return expect(0);
+      return assert.expect(0);
     }
 
     this.get('webrtc.outputDeviceList').pushObjects(mockDevices);
@@ -225,7 +225,7 @@ test('it should start with specified outputDevice', function (assert) {
 test('it should show a system default message if there are no output devices listed', function (assert) {
   return Ember.run(this, function () {
     if (!hasAudioSupport()) {
-      return expect(0);
+      return assert.expect(0);
     }
 
     this.set('webrtc.outputDeviceList', []);
@@ -262,7 +262,7 @@ test('it should change camera', function (assert) {
     const select = this.$('select');
     assert.equal(select.val(), mockDevices[0].deviceId);
 
-    fillIn('select', mockDevices[1].deviceId).then(() => {
+    return fillIn('select', mockDevices[1].deviceId).then(() => {
       assert.equal(this.get('camera'), mockDevices[1]);
       this.get('webrtc.cameraList').clear();
     });
@@ -278,7 +278,7 @@ test('it should change mic', function (assert) {
     const select = this.$('select');
     assert.equal(select.val(), mockDevices[0].deviceId);
 
-    fillIn('select', mockDevices[1].deviceId).then(() => {
+    return fillIn('select', mockDevices[1].deviceId).then(() => {
       assert.equal(this.get('microphone'), mockDevices[1]);
     });
   });
@@ -302,7 +302,7 @@ test('it should change resolution', function (assert) {
 test('it should change outputDevice', function (assert) {
   return Ember.run(this, function () {
     if (!hasAudioSupport()) {
-      return expect(0);
+      return assert.expect(0);
     }
     this.get('webrtc.outputDeviceList').pushObjects(mockDevices);
     this.set('audio', true);
@@ -311,7 +311,7 @@ test('it should change outputDevice', function (assert) {
     const select = this.$('select[id*="-speakers-select"]');
     assert.equal(select.val(), mockDevices[0].deviceId);
 
-    fillIn('select[id*="-speakers-select"]', mockDevices[1].deviceId).then(() => {
+    return fillIn('select[id*="-speakers-select"]', mockDevices[1].deviceId).then(() => {
       assert.equal(this.get('outputDevice'), mockDevices[1]);
     });
   });
