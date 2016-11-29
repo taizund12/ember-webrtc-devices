@@ -43,7 +43,7 @@ export default Mixin.create({
     return support;
   }),
 
-  videoCallCapable: computed('hasCamera', 'audio', function () {
+  videoCallCapable: computed('audioCallCapable', function () {
     const audioCallCapable = this.get('audioCallCapable');
     if (!audioCallCapable) {
       return false;
@@ -54,7 +54,7 @@ export default Mixin.create({
     if (!supportVp8) {
       return false;
     }
-    return this.get('hasCamera');
+    return true;
   }),
 
   outputDeviceList: Ember.A(),
