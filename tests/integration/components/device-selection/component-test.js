@@ -103,6 +103,7 @@ test('it shows a message iff the browser cannot enumerate devices', function (as
 test('it shows a camera select and resolution select iff there are cameras, and video is true, and there are resolutions', function (assert) {
   Ember.run(this, function () {
     this.get('webrtc.cameraList').pushObjects(mockDevices);
+    this.set('webrtc.hasCamera', true);
     this.get('webrtc.resolutionList').pushObjects(mockResolutions);
     this.renderDefault();
   });
@@ -128,6 +129,7 @@ test('it shows a camera select and resolution select iff there are cameras, and 
 test('it shows microphone select iff there are microphones and audio is true', function (assert) {
   Ember.run(this, function () {
     this.get('webrtc.microphoneList').pushObjects(mockDevices);
+    this.set('webrtc.hasMicrophone', true);
     this.renderDefault();
   });
 
@@ -170,6 +172,7 @@ test('it shows a troubleshoot button if an openTroubleshoot action is provided',
 test('it should start with specified camera', function (assert) {
   return Ember.run(this, function () {
     this.get('webrtc.cameraList').pushObjects(mockDevices);
+    this.set('webrtc.hasCamera', true);
     this.set('camera', mockDevices[0]);
     this.renderDefault();
 
@@ -187,6 +190,7 @@ test('it should start with specified camera', function (assert) {
 test('it should start with specified mic', function (assert) {
   return Ember.run(this, function () {
     this.get('webrtc.microphoneList').pushObjects(mockDevices);
+    this.set('webrtc.hasMicrophone', true);
     this.set('microphone', mockDevices[0]);
     this.renderDefault();
 
@@ -256,6 +260,7 @@ test('it should start with specified resolution', function (assert) {
 test('it should change camera', function (assert) {
   return Ember.run(this, function () {
     this.get('webrtc.cameraList').pushObjects(mockDevices);
+    this.set('webrtc.hasCamera', true);
     this.set('camera', mockDevices[0]);
     this.renderDefault();
 
@@ -272,6 +277,7 @@ test('it should change camera', function (assert) {
 test('it should change mic', function (assert) {
   return Ember.run(this, function () {
     this.get('webrtc.microphoneList').pushObjects(mockDevices);
+    this.set('webrtc.hasMicrophone', true);
     this.set('microphone', mockDevices[0]);
     this.renderDefault();
 

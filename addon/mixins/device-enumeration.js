@@ -32,10 +32,6 @@ export default Mixin.create({
   microphoneList: Ember.A(),
   hasMicrophone: computed.notEmpty('microphoneList'),
 
-  noVideoHardware: computed('canListDevices', 'cameraList', function () {
-    return this.get('canListDevices') && this.get('cameraList').length === 0;
-  }),
-
   callCapable: computed.and('audioCallCapable', 'videoCallCapable'),
 
   audioCallCapable: computed(function () {
@@ -47,7 +43,7 @@ export default Mixin.create({
     return support;
   }),
 
-  videoCallCapable: computed('noVideoHardware', 'audio', function () {
+  videoCallCapable: computed('audioCallCapable', function () {
     const audioCallCapable = this.get('audioCallCapable');
     if (!audioCallCapable) {
       return false;
@@ -58,7 +54,7 @@ export default Mixin.create({
     if (!supportVp8) {
       return false;
     }
-    return !this.get('noVideoHardware');
+    return true;
   }),
 
   outputDeviceList: Ember.A(),

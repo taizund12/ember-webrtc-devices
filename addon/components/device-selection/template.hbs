@@ -11,7 +11,7 @@
                     </label>
                 </div>
                 <div class="entry-values">
-                    {{#if videoCallCapable}}
+                    {{#if webrtc.hasCamera}}
                         {{#x-select id=(concat elementId '-camera-select')
                            value=selectedCameraId
                            action="changeCamera"
@@ -57,7 +57,7 @@
                     </label>
                 </div>
                 <div class="entry-values">
-                    {{#if audioCallCapable}}
+                    {{#if webrtc.hasMicrophone}}
                         {{#x-select
                            id=(concat elementId '-microphone-select')
                            value=selectedMicrophoneId
