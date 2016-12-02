@@ -19,9 +19,9 @@
         "browserMediaSettings": "Um die ausgewählten Mediengeräte zu konfigurieren, verwenden Sie das Mediensymbol in der Adressleiste Ihres Browsers.",
         "noCameraDetected": "Video kann leider nicht gestartet werden, da keine Kamera erkannt wurde.",
         "noMicrophoneDetected": "Leider wurde kein Mikrofon erkannt, daher können Sie nur zuhören.",
-        "cameraLabel": "Kamera {Nummer}",
-        "microphoneLabel": "Mikrofon {Nummer}",
-        "outputDeviceLabel": "Lautsprecher {Nummer}",
+        "cameraLabel": "Kamera {number}",
+        "microphoneLabel": "Mikrofon {number}",
+        "outputDeviceLabel": "Lautsprecher {number}",
         "outputDeviceSystemDefault": "Systemstandard",
         "default": "Standard"
     }
