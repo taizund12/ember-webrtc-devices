@@ -225,10 +225,9 @@ export default Mixin.create({
         microphoneList: Ember.A(microphones),
         outputDeviceList: Ember.A(outputDevices)
       });
-    }).catch(() => {
-      try {
-        this.set('canListDevices', false);
-      } catch (e) {}
+    }).catch(err => {
+      Ember.Logger.error(err);
+      this.set('canListDevices', false);
       addMicrophone(defaultDevice);
     });
   },
