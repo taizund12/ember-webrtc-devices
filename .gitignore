@@ -13,6 +13,10 @@ bower.json.ember-try
 # Travis CI
 travis-phantomjs/
 
+# Typings folder for vscode
+/typings
+jsconfig.json
+
 # misc
 /.sass-cache
 /connect.lock
