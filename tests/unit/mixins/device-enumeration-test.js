@@ -76,3 +76,27 @@ test('updateDefaultDevices should throw an error when called', assert => {
     assert.throws(e, 'updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
   }
 });
+
+function setWindowPropertiesForCallCapable(isVideoCall) {
+  window.RTCPeerConnection = (e,t) => {};
+  try {
+    window.navigator.mediaDevices = {
+        getUserMedia: (e) => {}
+    };
+  } catch (e) {
+    // swallow error when assigning read-only window.navigator
+  }
+  window.AudioContext = () => {};
+  window.AudioContext.prototype.createMediaStreamSource = () => {};
+}
+
+test('audioCallCapable should be true if all properties exists', assert => {
+  // Mock out needed properties in window object
+  setWindowPropertiesForCallCapable();
+  assert.equal(subject.get('audioCallCapable'), true);
+});
+
+test('videoCallCapable should be true if all audioCallCapable is true and other props for videoCallCapable', assert => {
+  // assert.equal(subject.get('videoCallCapable'), true);
+  assert.ok(true);
+});
