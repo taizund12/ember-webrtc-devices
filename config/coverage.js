@@ -5,12 +5,12 @@ module.exports = {
     reporters: ['lcov', 'json', 'json-summary', 'text', 'text-summary'],
     // Defaults to ['*/mirage/**/*']
     excludes: [
-        "/blueprints",
-        "/config",
-        "/public", 
-        "/tmp", 
-        "/tests/dummy/**",
-        "/vendor"
+        "*/blueprints",
+        "*/config",
+        "*/public", 
+        "*/tmp", 
+        "**/dummy/**/*",
+        "*/vendor"
     ],
     // Defaults to coverage. A folder relative to the root of your project to store coverage results.
     // Set to true or false if you are using ESNext features.
