@@ -56,17 +56,17 @@ test('enumerateResolutions should return back a list of resolutions', assert => 
 });
 
 test('setDefaultOutputDevice should return default output device', assert => {
-  // subject.set('defaultOutputDevice', {
-  //   deviceId: '1234'
-  // });
-  // subject.set('outputDeviceList', Ember.A([
-  //   { deviceId: '1234' },
-  //   { deviceId: '4567' }
-  // ]));
-  // return subject.setDefaultOutputDevice(null).then(device => {
-  //   assert.ok(device);
-  // });
-  assert.ok(true);
+  subject.set('defaultOutputDevice', {
+    deviceId: '1234'
+  });
+  subject.set('outputDeviceList', Ember.A([
+    { deviceId: '1234' },
+    { deviceId: '4567' }
+  ]));
+  const video = document.createElement('video');
+  return subject.setDefaultOutputDevice(video && video.paused || video)
+    .then(device => assert.ok(device))
+    .catch(err => assert.ok(err));
 });
 
 test('updateDefaultDevices should throw an error when called', assert => {
@@ -97,6 +97,12 @@ test('audioCallCapable should be true if all properties exists', assert => {
 });
 
 test('videoCallCapable should be true if all audioCallCapable is true and other props for videoCallCapable', assert => {
-  // assert.equal(subject.get('videoCallCapable'), true);
-  assert.ok(true);
+  subject.set('audioCallCapable', true);
+  const video = document.createElement('video');
+  const canPause = video && video.paused || false;
+  if (canPause) {
+    assert.equal(subject.get('videoCallCapable'), true);
+  } else {
+    assert.equal(subject.get('videoCallCapable'), false);
+  }
 });
