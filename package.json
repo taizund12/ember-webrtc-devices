@@ -68,5 +68,10 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "semistandard": {
+    "ignore": [
+      "/app/translations/webrtc-devices"
+    ]
   }
 }
