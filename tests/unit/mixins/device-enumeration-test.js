@@ -51,8 +51,40 @@ test('setOutputDevice will reject if the device is not found', assert => {
 });
 
 test('enumerateResolutions should return back a list of resolutions', assert => {
+  subject.set('fullHd', true);
   const resolutions = subject.enumerateResolutions();
   assert.ok(resolutions.length);
+});
+
+function setMediaDevices(isFirstCall) {
+  if (isFirstCall) {
+      try {
+        window.navigator = {
+          mediaDevices: () => {}
+        };
+      } catch (e) {} // swallow error when assigning read-only window.navigator 
+  } else {
+    try {
+      window.navigator = {
+        mediaDevices: () => {}
+      };
+      window.navigator.mediaDevices.enumerateDevices = () => Ember.RSVP.resolve();
+    } catch (e) {} // swallow error when assigning read-only window.navigator 
+  }
+}
+
+test('enumerateDevices should return a list of devices', assert => {
+  setMediaDevices(true);
+  const enumerateDevicesFirstCall = subject.enumerateDevices();
+  if (enumerateDevicesFirstCall) {
+    assert.ok(subject.enumerateDevices());
+  }
+  setMediaDevices(false);
+  subject.set('callCapable', true);
+  const enumerateDevicesSecondCall = subject.enumerateDevices();
+  if (enumerateDevicesSecondCall && window.navigator.mediaDevices && window.navigator.mediaDevices.enumerateDevices) {
+    assert.ok(enumerateDevicesSecondCall);
+  }
 });
 
 test('setDefaultOutputDevice should return default output device', assert => {
