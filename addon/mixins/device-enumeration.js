@@ -233,7 +233,7 @@ export default Mixin.create({
   },
 
   setOutputDevice (el, device) {
-    if (!(device && device.deviceId)) {
+    if (typeof device !== 'object' || typeof device.deviceId === 'undefined' || device.deviceId === null) {
       return RSVP.Promise.reject('Cannot set null device');
     }
 
