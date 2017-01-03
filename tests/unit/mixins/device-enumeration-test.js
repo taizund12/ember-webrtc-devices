@@ -2,18 +2,19 @@ import Ember from 'ember';
 import DeviceEnumerationMixin from 'webrtc-devices/mixins/device-enumeration';
 import { module, test } from 'qunit';
 
-module('Unit | Mixin | device enumeration');
+let DeviceEnumerationObject, subject;
+module('Unit | Mixin | device enumeration', {
+    beforeEach() {
+      DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
+      subject = DeviceEnumerationObject.create();
+    }
+});
 
-// Replace this with your real tests.
-test('it works', function (assert) {
-  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
-  const subject = DeviceEnumerationObject.create();
+test('it works', assert => {
   assert.ok(subject);
 });
 
-test('hasCamera should be false if there are no cameras with non-default id', function (assert) {
-  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
-  const subject = DeviceEnumerationObject.create();
+test('hasCamera should be false if there are no cameras with non-default id', assert => {
   assert.equal(subject.get('hasCamera'), false);
   subject.get('cameraList').pushObject({
     deviceId: 'default',
@@ -27,9 +28,7 @@ test('hasCamera should be false if there are no cameras with non-default id', fu
   assert.equal(subject.get('hasCamera'), true);
 });
 
-test('hasMicrophone should be true if there is a microphone, even if it has a default id', function (assert) {
-  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
-  const subject = DeviceEnumerationObject.create();
+test('hasMicrophone should be true if there is a microphone, even if it has a default id', assert => {
   assert.equal(subject.get('hasMicrophone'), false);
   subject.get('microphoneList').pushObject({
     deviceId: 'default',
@@ -38,18 +37,104 @@ test('hasMicrophone should be true if there is a microphone, even if it has a de
   assert.equal(subject.get('hasMicrophone'), true);
 });
 
-test('setOutputDevice will reject if the device is not found', function (assert) {
+test('setOutputDevice will reject if the device is not found', assert => {
   assert.expect(1);
-
-  const DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
-  const subject = DeviceEnumerationObject.create();
 
   subject.set('outputDeviceList', Ember.A([
     { deviceId: '1234' },
     { deviceId: '4567' }
   ]));
 
-  return subject.setOutputDevice(null, { deviceId: '0987' }).catch(function (err) {
+  return subject.setOutputDevice(null, { deviceId: '0987' }).catch(err => {
     assert.ok(err);
   });
+});
+
+test('enumerateResolutions should return back a list of resolutions', assert => {
+  subject.set('fullHd', true);
+  const resolutions = subject.enumerateResolutions();
+  assert.ok(resolutions.length);
+});
+
+function setMediaDevices(isFirstCall) {
+  if (isFirstCall) {
+      try {
+        window.navigator = {
+          mediaDevices: () => {}
+        };
+      } catch (e) {} // swallow error when assigning read-only window.navigator 
+  } else {
+    try {
+      window.navigator = {
+        mediaDevices: () => {}
+      };
+      window.navigator.mediaDevices.enumerateDevices = () => Ember.RSVP.resolve();
+    } catch (e) {} // swallow error when assigning read-only window.navigator 
+  }
+}
+
+test('enumerateDevices should return a list of devices', assert => {
+  setMediaDevices(true);
+  const enumerateDevicesFirstCall = subject.enumerateDevices();
+  if (enumerateDevicesFirstCall) {
+    assert.ok(subject.enumerateDevices());
+  }
+  setMediaDevices(false);
+  subject.set('callCapable', true);
+  const enumerateDevicesSecondCall = subject.enumerateDevices();
+  if (enumerateDevicesSecondCall && window.navigator.mediaDevices && window.navigator.mediaDevices.enumerateDevices) {
+    assert.ok(enumerateDevicesSecondCall);
+  }
+});
+
+test('setDefaultOutputDevice should return default output device', assert => {
+  subject.set('defaultOutputDevice', {
+    deviceId: '1234'
+  });
+  subject.set('outputDeviceList', Ember.A([
+    { deviceId: '1234' },
+    { deviceId: '4567' }
+  ]));
+  const video = document.createElement('video');
+  return subject.setDefaultOutputDevice(video && video.paused || video)
+    .then(device => assert.ok(device))
+    .catch(err => assert.ok(err));
+});
+
+test('updateDefaultDevices should throw an error when called', assert => {
+  try {
+    subject.updateDefaultDevices()
+  } catch (e) {
+    assert.throws(e, 'updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
+  }
+});
+
+function setWindowPropertiesForCallCapable(isVideoCall) {
+  window.RTCPeerConnection = (e,t) => {};
+  try {
+    window.navigator.mediaDevices = {
+        getUserMedia: (e) => {}
+    };
+  } catch (e) {
+    // swallow error when assigning read-only window.navigator
+  }
+  window.AudioContext = () => {};
+  window.AudioContext.prototype.createMediaStreamSource = () => {};
+}
+
+test('audioCallCapable should be true if all properties exists', assert => {
+  // Mock out needed properties in window object
+  setWindowPropertiesForCallCapable();
+  assert.equal(subject.get('audioCallCapable'), true);
+});
+
+test('videoCallCapable should be true if all audioCallCapable is true and other props for videoCallCapable', assert => {
+  subject.set('audioCallCapable', true);
+  const video = document.createElement('video');
+  const canPause = video && video.paused || false;
+  if (canPause) {
+    assert.equal(subject.get('videoCallCapable'), true);
+  } else {
+    assert.equal(subject.get('videoCallCapable'), false);
+  }
 });
