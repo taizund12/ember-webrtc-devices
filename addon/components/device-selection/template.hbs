@@ -73,40 +73,6 @@
                 </div>
             </div>
         {{/if}}
-        {{#if audio}}
-            <div class="entry-row">
-                <div class="entry-label">
-                    <label for="{{concat elementId '-outputDevice-select'}}">
-                        <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "webrtcDevices.audioDestinationTooltip"}}">
-                            <span class="sr-only">
-                                {{t "webrtcDevices.audioDestination"}}
-                            </span>
-                            <i class="pc pc-speakers" title="{{t "webrtcDevices.outputSelect"}}"></i>
-                        </a>
-                    </label>
-                    <audio class="hide preview-audio">
-                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.mp3" type="audio/mpeg">
-                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.aac" type="audio/mp4">
-                        <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.ogg" type="audio/ogg">
-                    </audio>
-                </div>
-                <div class="entry-values">
-                    {{#if webrtc.outputDeviceList.length}}
-                        {{#x-select
-                           id=(concat elementId '-speakers-select')
-                           value=selectedOutputDeviceId
-                           action="changeOutputDevice"
-                           class="form-control speakers-select"}}
-                            {{#each webrtc.outputDeviceList as |outputDevice|}}
-                                {{#x-option value=outputDevice.deviceId}}{{outputDevice.label}}{{/x-option}}
-                            {{/each}}
-                        {{/x-select}}
-                    {{else}}
-                      <span class="system-default-message">{{t "webrtcDevices.outputDeviceSystemDefault"}}</span>
-                    {{/if}}
-                </div>
-            </div>
-        {{/if}}
         {{#if (and webrtc.resolutionList.length (and webrtc.cameraList.length video))}}
             <div class="entry-row">
                 <div class="entry-label">
@@ -135,10 +101,46 @@
             {{t "webrtcDevices.browserMediaSettings"}}
         </div>
     {{/if}}
+    {{#if audio}}
+        <div class="entry-row">
+            <div class="entry-label audio-selection">
+                <label for="{{concat elementId '-outputDevice-select'}}">
+                    <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "webrtcDevices.audioDestinationTooltip"}}">
+                        <span class="sr-only">
+                            {{t "webrtcDevices.audioDestination"}}
+                        </span>
+                        <i class="pc pc-speakers" title="{{t "webrtcDevices.outputSelect"}}"></i>
+                        <span class="preview-audio-text">
+                            {{t "webrtcDevices.playAudio"}}
+                        </span>
+                    </a>
+                </label>
+                <audio class="hide preview-audio">
+                    <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.mp3" type="audio/mpeg">
+                    <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.aac" type="audio/mp4">
+                    <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.ogg" type="audio/ogg">
+                </audio>
+            </div>
+            <div class="entry-values">
+                {{#if webrtc.outputDeviceList.length}}
+                    {{#x-select
+                       id=(concat elementId '-speakers-select')
+                       value=selectedOutputDeviceId
+                       action="changeOutputDevice"
+                       class="form-control speakers-select"}}
+                        {{#each webrtc.outputDeviceList as |outputDevice|}}
+                            {{#x-option value=outputDevice.deviceId}}{{outputDevice.label}}{{/x-option}}
+                        {{/each}}
+                    {{/x-select}}
+                {{else}}
+                  <span class="system-default-message">{{t "webrtcDevices.outputDeviceSystemDefault"}}</span>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
     {{#if showTroubleshoot}}
         <div class="entry-row troubleshoot">
             <div class="entry-values">
-                {{t "webrtcDevices.difficulty"}}
                 <button type="button" class="btn btn-link troubleshoot-link" {{action "openTroubleshoot"}}>
                     {{t "webrtcDevices.troubleshoot"}}
                 </button>

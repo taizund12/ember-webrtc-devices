@@ -6,6 +6,7 @@
     "microphoneSelect": "Select microphone",
     "audioDestination": "Audio destination (speakers)",
     "audioDestinationTooltip": "Test speakers",
+    "playAudio": "Play Sound",
     "outputSelect": "Select speakers",
     "resolution": "Resolution",
     "resolutionSelect": "Select resolution",
@@ -14,8 +15,7 @@
       "medium": "Medium",
       "high": "HD"
     },
-    "difficulty": "Having difficulty?",
-    "troubleshoot": "Test your settings.",
+    "troubleshoot": "Run Diagnostics",
     "browserMediaSettings": "To configure the selected media devices, please use the media icon in your browser's address bar.",
     "noCameraDetected": "Sorry, video cannot be started because a camera was not detected.",
     "noMicrophoneDetected": "Sorry, a microphone was not detected so you can only listen.",
