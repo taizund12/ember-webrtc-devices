@@ -4,10 +4,10 @@ import { module, test } from 'qunit';
 
 let DeviceEnumerationObject, subject;
 module('Unit | Mixin | device enumeration', {
-    beforeEach() {
-      DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
-      subject = DeviceEnumerationObject.create();
-    }
+  beforeEach () {
+    DeviceEnumerationObject = Ember.Object.extend(DeviceEnumerationMixin);
+    subject = DeviceEnumerationObject.create();
+  }
 });
 
 test('it works', assert => {
@@ -56,20 +56,24 @@ test('enumerateResolutions should return back a list of resolutions', assert => 
   assert.ok(resolutions.length);
 });
 
-function setMediaDevices(isFirstCall) {
+const MediaDevices = Ember.Object.extend(Ember.Evented, {
+  enumerateDevices: () => Ember.RSVP.resolve()
+});
+MediaDevices.constructor.prototype.ondevicechange = null;
+
+function setMediaDevices (isFirstCall) {
   if (isFirstCall) {
-      try {
-        window.navigator = {
-          mediaDevices: () => {}
-        };
-      } catch (e) {} // swallow error when assigning read-only window.navigator 
-  } else {
     try {
       window.navigator = {
         mediaDevices: () => {}
       };
-      window.navigator.mediaDevices.enumerateDevices = () => Ember.RSVP.resolve();
-    } catch (e) {} // swallow error when assigning read-only window.navigator 
+    } catch (e) {}// swallow error when assigning read-only window.navigator
+  } else {
+    try {
+      window.navigator = {
+        mediaDevices: MediaDevices.create()
+      };
+    } catch (e) {} // swallow error when assigning read-only window.navigator
   }
 }
 
@@ -103,17 +107,17 @@ test('setDefaultOutputDevice should return default output device', assert => {
 
 test('updateDefaultDevices should throw an error when called', assert => {
   try {
-    subject.updateDefaultDevices()
+    subject.updateDefaultDevices();
   } catch (e) {
     assert.throws(e, 'updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
   }
 });
 
-function setWindowPropertiesForCallCapable(isVideoCall) {
-  window.RTCPeerConnection = (e,t) => {};
+function setWindowPropertiesForCallCapable (isVideoCall) {
+  window.RTCPeerConnection = (e, t) => {};
   try {
     window.navigator.mediaDevices = {
-        getUserMedia: (e) => {}
+      getUserMedia: (e) => {}
     };
   } catch (e) {
     // swallow error when assigning read-only window.navigator

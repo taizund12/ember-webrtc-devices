@@ -1,4 +1,4 @@
-/* global _ */
+/* global _, $ */
 
 import Ember from 'ember';
 
@@ -64,7 +64,6 @@ export default Mixin.create({
 
   enumerationTimer: null,
 
-  // Returns a promise which resolves when all devices have been enumerated and loaded
   init () {
     this._super(...arguments);
     const timer = run.next(this, function () {
@@ -74,6 +73,14 @@ export default Mixin.create({
     this.set('enumerationTimer', timer);
 
     this.lookup = this.lookup || ((key) => key);
+
+    if (window.navigator && window.navigator.mediaDevices &&
+        window.navigator.mediaDevices.constructor.prototype.hasOwnProperty('ondevicechange')) {
+      $(window.navigator.mediaDevices).on('devicechange', () => {
+        Ember.Logger.debug('onDeviceChange fired');
+        Ember.run.debounce(this.enumerateDevices(), 400);
+      });
+    }
   },
 
   willDestroy () {
@@ -149,9 +156,10 @@ export default Mixin.create({
     return resolutions;
   },
 
+  // Returns a promise which resolves when all devices have been enumerated and loaded
   enumerateDevices () {
     if (!window.navigator.mediaDevices || !window.navigator.mediaDevices.enumerateDevices) {
-      return;
+      return Ember.RSVP.reject();
     }
     let cameraCount = 0;
     let microphoneCount = 0;
