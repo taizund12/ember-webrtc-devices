@@ -6,7 +6,7 @@ module.exports = function (defaults) {
     'ember-cli-qunit': {
       useLintTree: false // we use standard instead
     },
-    finterprint: {
+    fingerprint: {
       enabled: false
     }
   // Add options here
