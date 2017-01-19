@@ -6,6 +6,7 @@
         "microphoneSelect": "Seleziona microfono",
         "audioDestination": "Destinazione audio (altoparlanti)",
         "audioDestinationTooltip": "Verifica altoparlanti",
+        "playAudio": "Riproduci suono",
         "outputSelect": "Seleziona altoparlanti",
         "resolution": "Risoluzione",
         "resolutionSelect": "Seleziona risoluzione",
@@ -14,8 +15,7 @@
             "medium": "Media",
             "high": "Alta"
         },
-        "difficulty": "Problemi?",
-        "troubleshoot": "Verifica delle impostazioni.",
+        "troubleshoot": "Esegui diagnostiche",
         "browserMediaSettings": "Per configurare i dispositivi multimediali selezionati, usare la relativa icona nella barra dell'indirizzo del browser.",
         "noCameraDetected": "Impossibile avviare il video. Non è stata rilevata una videocamera.",
         "noMicrophoneDetected": "Impossibile avviare l'audio. Non è stato rilevato un microfono",

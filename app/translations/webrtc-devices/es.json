@@ -6,6 +6,7 @@
         "microphoneSelect": "Seleccionar micrófono",
         "audioDestination": "Salida de audio (altavoces)",
         "audioDestinationTooltip": "Probar altavoces",
+        "playAudio": "Reproducir sonido",
         "outputSelect": "Seleccionar altavoces",
         "resolution": "Resolución",
         "resolutionSelect": "Seleccionar resolución",
@@ -14,8 +15,7 @@
             "medium": "Intermedia",
             "high": "Alta definición"
         },
-        "difficulty": "¿Tiene algún problema?",
-        "troubleshoot": "Pruebe su configuración.",
+        "troubleshoot": "Ejecutar diagnóstico",
         "browserMediaSettings": "Para configurar los dispositivos multimedia seleccionados, use el icono de multimedia en la barra de direcciones de su navegador.",
         "noCameraDetected": "Lamentamos el inconveniente, pero no se puede iniciar el video porque no se ha detectado una cámara.",
         "noMicrophoneDetected": "Lamentablemente, no se detectó micrófono. Podrá escuchar únicamente.",
