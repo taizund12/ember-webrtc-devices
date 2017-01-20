@@ -6,6 +6,7 @@
         "microphoneSelect": "マイクを選択",
         "audioDestination": "オーディオ再生先 (スピーカー)",
         "audioDestinationTooltip": "スピーカーのテスト",
+        "playAudio": "サウンドの再生",
         "outputSelect": "スピーカーの選択",
         "resolution": "解像度",
         "resolutionSelect": "解像度を選択",
@@ -14,8 +15,7 @@
             "medium": "中",
             "high": "HD"
         },
-        "difficulty": "問題がありますか？",
-        "troubleshoot": "設定をテストしてください。",
+        "troubleshoot": "診断の実行",
         "browserMediaSettings": "選択されたメディア デバイスを設定するには、ブラウザーのアドレス バーでメディア アイコンを使用してください。",
         "noCameraDetected": "申し訳ありません、カメラが認識されないためビデオを開始できません。",
         "noMicrophoneDetected": "申し訳ありませんが、マイクが検出されなかったので、聴き取りのみ可能です。",
