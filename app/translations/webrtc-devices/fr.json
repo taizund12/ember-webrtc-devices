@@ -6,6 +6,7 @@
         "microphoneSelect": "Sélectionner le microphone",
         "audioDestination": "Destination audio (hauts-parleurs)",
         "audioDestinationTooltip": "Tester les hauts-parleurs",
+        "playAudio": "Activer le son",
         "outputSelect": "Sélectionner les hauts-parleurs",
         "resolution": "Résolution",
         "resolutionSelect": "Sélectionner la résolution",
@@ -14,8 +15,7 @@
             "medium": "Moyenne",
             "high": "HD"
         },
-        "difficulty": "Des problèmes ?",
-        "troubleshoot": "Tester les paramètres",
+        "troubleshoot": "Exécuter les diagnostics",
         "browserMediaSettings": "Pour configurer les appareils multimédia sélectionnés, utilisez l'icône multimédia de la barre d'adresse de votre navigateur.",
         "noCameraDetected": "Désolé ! La vidéo ne peut pas commencer, car aucune caméra n'est détectée.",
         "noMicrophoneDetected": "Désolé, mais aucun microphone n'a été détecté. Vous ne pourrez qu'écouter.",

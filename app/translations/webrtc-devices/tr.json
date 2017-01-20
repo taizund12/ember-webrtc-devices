@@ -6,6 +6,7 @@
         "microphoneSelect": "Mikrofon seç",
         "audioDestination": "Ses hedefi (hoparlörler)",
         "audioDestinationTooltip": "Hoparlörleri test et",
+        "playAudio": "Ses Çal",
         "outputSelect": "Hoparlörleri seç",
         "resolution": "Çözünürlük",
         "resolutionSelect": "Çözünürlük seç",
@@ -14,8 +15,7 @@
             "medium": "Orta",
             "high": "HD"
         },
-        "difficulty": "Zorluk mu yaşıyorsunuz?",
-        "troubleshoot": "Ayarlarınızı test edin.",
+        "troubleshoot": "Tanılamayı Çalıştır",
         "browserMediaSettings": "Seçili medya cihazlarını yapılandırmak için lütfen tarayıcınızın adres çubuğundaki medya simgesini kullanın.",
         "noCameraDetected": "Kamera algılanmadığından video başlatılamıyor.",
         "noMicrophoneDetected": "Mikrofon algılanamadığı için sadece dinleyebilirsiniz.",

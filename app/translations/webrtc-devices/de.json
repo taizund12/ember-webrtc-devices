@@ -6,6 +6,7 @@
         "microphoneSelect": "Mikrofon auswählen",
         "audioDestination": "Audioziel (Lautsprecher)",
         "audioDestinationTooltip": "Lautsprecher testen",
+        "playAudio": "Sound wiedergeben",
         "outputSelect": "Lautsprecher auswählen",
         "resolution": "Auflösung",
         "resolutionSelect": "Auflösung auswählen",
@@ -14,8 +15,7 @@
             "medium": "Mittel",
             "high": "HD"
         },
-        "difficulty": "Haben Sie Schwierigkeiten?",
-        "troubleshoot": "Testen Sie Ihre Einstellungen.",
+        "troubleshoot": "Diagnose ausführen",
         "browserMediaSettings": "Um die ausgewählten Mediengeräte zu konfigurieren, verwenden Sie das Mediensymbol in der Adressleiste Ihres Browsers.",
         "noCameraDetected": "Video kann leider nicht gestartet werden, da keine Kamera erkannt wurde.",
         "noMicrophoneDetected": "Leider wurde kein Mikrofon erkannt, daher können Sie nur zuhören.",

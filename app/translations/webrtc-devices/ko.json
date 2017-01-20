@@ -6,6 +6,7 @@
         "microphoneSelect": "마이크 선택",
         "audioDestination": "오디오 대상(스피커)",
         "audioDestinationTooltip": "스피커 테스트",
+        "playAudio": "소리 재생",
         "outputSelect": "스피커 선택",
         "resolution": "해상도",
         "resolutionSelect": "해상도 선택",
@@ -14,8 +15,7 @@
             "medium": "중간",
             "high": "HD"
         },
-        "difficulty": "문제가 있습니까?",
-        "troubleshoot": "설정을 테스트하십시오.",
+        "troubleshoot": "진단 실행",
         "browserMediaSettings": "선택한 미디어 장치를 구성하려면 브라우저의 주소 표시줄에 있는 미디어 아이콘을 사용하십시오.",
         "noCameraDetected": "죄송합니다. 카메라가 감지되지 않아서 비디오를 시작할 수 없습니다.",
         "noMicrophoneDetected": "죄송합니다. 마이크를 감지할 수 없으므로 듣는 것만 가능합니다.",
