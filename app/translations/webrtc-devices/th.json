@@ -6,6 +6,7 @@
         "microphoneSelect": "เลือกไมโครโฟน",
         "audioDestination": "ปลายทางเสียง (ลำโพง)",
         "audioDestinationTooltip": "ทดสอบลำโพง",
+        "playAudio": "เล่นเสียง",
         "outputSelect": "เลือกลำโพง",
         "resolution": "ความละเอียด",
         "resolutionSelect": "เลือกความละเอียด",
@@ -14,8 +15,7 @@
             "medium": "ปานกลาง",
             "high": "HD"
         },
-        "difficulty": "ประสบปัญหาหรือไม่",
-        "troubleshoot": "ทดสอบการตั้งค่าของคุณ",
+        "troubleshoot": "เรียกใช้การวินิจฉัย",
         "browserMediaSettings": "ในการกำหนดค่าอุปกรณ์มีเดียที่เลือก โปรดใช้ไอคอนมีเดียในแถบที่อยู่ของเบราเซอร์คุณ",
         "noCameraDetected": "ขออภัย ไม่สามารถเริ่มวิดีโอได้เนื่องจากไม่พบกล้อง",
         "noMicrophoneDetected": "ขออภัย ไม่พบไมโครโฟน ดังนั้นคุณจึงฟังได้อย่างเดียว",

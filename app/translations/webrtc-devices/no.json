@@ -6,6 +6,7 @@
         "microphoneSelect": "Velg mikrofon",
         "audioDestination": "Lydmål (høyttalere)",
         "audioDestinationTooltip": "Test høyttalere",
+        "playAudio": "Spill av lyd",
         "outputSelect": "Velg høyttalere",
         "resolution": "Løsning",
         "resolutionSelect": "Velg løsning",
@@ -14,8 +15,7 @@
             "medium": "Middels",
             "high": "HD"
         },
-        "difficulty": "Har du problemer?",
-        "troubleshoot": "Test innstillingene.",
+        "troubleshoot": "Kjør diagnose",
         "browserMediaSettings": "Bruk medieikonet i nettleserens adresselinje til å konfigurere de valgte medieenhetene.",
         "noCameraDetected": "Beklager, video kan ikke startes fordi det ikke ble påvist noe kamera.",
         "noMicrophoneDetected": "Beklager, men siden ingen mikrofon ble påvist, kan du bare lytte.",
