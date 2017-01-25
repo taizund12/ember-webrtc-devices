@@ -93,7 +93,10 @@ export default Mixin.create({
   },
 
   updateDefaultDevices (/* devices */) {
-    throw new Error('updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
+    const extended = !!this._super(...arguments);
+    if (!extended) {
+      throw new Error('updateDefaultDevices should be overridden - do you need to save preferences or change video stream?');
+    }
   },
 
   enumerateResolutions () {
