@@ -113,6 +113,37 @@ test('updateDefaultDevices should throw an error when called', assert => {
   }
 });
 
+test('updateDefaultDevices should not throw an error when called if it has been extended', assert => {
+  try {
+    const DeviceEnumerationObject2 = Ember.Object.extend(DeviceEnumerationMixin, {
+      updateDefaultDevices () {
+        return true;
+      }
+    });
+    const subject2 = DeviceEnumerationObject2.create();
+    subject2.updateDefaultDevices();
+  } catch (e) {
+    assert.ok(false, 'updateDefaultDevices should not have thrown here');
+  }
+  assert.ok(true, 'it finished without throwing');
+});
+
+test('updateDefaultDevices should not throw an error when called if it has been extended', assert => {
+  try {
+    const SomeOtherMixin = Ember.Mixin.create({
+      updateDefaultDevices () {
+        return true;
+      }
+    });
+    const DeviceEnumerationObject2 = Ember.Object.extend(SomeOtherMixin, DeviceEnumerationMixin);
+    const subject2 = DeviceEnumerationObject2.create();
+    subject2.updateDefaultDevices();
+  } catch (e) {
+    assert.ok(false, 'updateDefaultDevices should not have thrown here');
+  }
+  assert.ok(true, 'it finished without throwing');
+});
+
 function setWindowPropertiesForCallCapable (isVideoCall) {
   window.RTCPeerConnection = (e, t) => {};
   try {
