@@ -13,6 +13,7 @@
     "check:coverage": "./scripts/checkCodeCoverage.sh",
     "posttest": "npm run check:coverage -s",
     "coverage": "COVERAGE=true ember test",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "deploy:gh-pages": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "repository": "https://github.com/MyPureCloud/ember-webrtc-devices/",
@@ -23,6 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
+    "coveralls": "^2.11.15",
     "ember-cli": "2.9.1",
     "ember-cli-app-version": "^2.0.1",
     "ember-cli-code-coverage": "0.3.11",

@@ -43,3 +43,7 @@ script:
 after_script:
   - npm run build
   - ".travis/publish-gh-pages.sh"
+
+after_success:
+  - npm run coverage
+  - npm run coveralls
