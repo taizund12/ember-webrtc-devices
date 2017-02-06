@@ -1,5 +1,7 @@
 # webrtc-devices
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MyPureCloud/ember-webrtc-devices.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/MyPureCloud/ember-webrtc-devices.svg?branch=master)](https://travis-ci.org/MyPureCloud/ember-webrtc-devices)
 [![Coverage Status](https://coveralls.io/repos/github/MyPureCloud/ember-webrtc-devices/badge.svg?branch=master)](https://coveralls.io/github/MyPureCloud/ember-webrtc-devices)
 
