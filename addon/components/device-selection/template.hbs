@@ -105,15 +105,10 @@
         <div class="entry-row">
             <div class="entry-label audio-selection">
                 <label for="{{concat elementId '-outputDevice-select'}}">
-                    <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "webrtcDevices.audioDestinationTooltip"}}">
-                        <span class="sr-only">
-                            {{t "webrtcDevices.audioDestination"}}
-                        </span>
-                        <i class="pc pc-speakers" title="{{t "webrtcDevices.outputSelect"}}"></i>
-                        <span class="preview-audio-text">
-                            {{t "webrtcDevices.playAudio"}}
-                        </span>
-                    </a>
+                    <span class="sr-only">
+                        {{t "webrtcDevices.audioDestination"}}
+                    </span>
+                    <i class="pc pc-speakers" title="{{t "webrtcDevices.outputSelect"}}"></i>
                 </label>
                 <audio class="hide preview-audio">
                     <source src="{{applicationService.urlprefix}}assets/sounds/phone-ringtone.mp3" type="audio/mpeg">
@@ -136,6 +131,13 @@
                   <span class="system-default-message">{{t "webrtcDevices.outputDeviceSystemDefault"}}</span>
                 {{/if}}
             </div>
+        </div>
+        <div class= "entry-row audio-text">
+            <a href="#" class="btn btn-link" {{action "playTestSound"}} title="{{t "webrtcDevices.audioDestinationTooltip"}}">
+                <span class="preview-audio-text">
+                    {{t "webrtcDevices.playAudio"}}
+                </span>
+            </a>
         </div>
     {{/if}}
     {{#if showTroubleshoot}}
