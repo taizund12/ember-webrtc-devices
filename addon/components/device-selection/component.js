@@ -76,7 +76,7 @@ export default Component.extend(/* LoggerMixin, */{
 
       const outputDevice = this.get('selectedOutputDevice');
 
-      if (!audio || !outputDevice) {
+      if (!audio) {
         return;
       }
 
@@ -88,7 +88,10 @@ export default Component.extend(/* LoggerMixin, */{
       audio.currentTime = 0;
       const playPromise = audio.play() || RSVP.resolve();
       playPromise.then(() => {
-        return this.get('webrtc').setOutputDevice(audio, outputDevice);
+        if (outputDevice) {
+          return this.get('webrtc').setOutputDevice(audio, outputDevice);
+        }
+        return Promise.resolve();
       }).then(() => {
         return audio.pause() || RSVP.resolve();
       }).then(() => {
