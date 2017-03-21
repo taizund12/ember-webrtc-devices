@@ -177,6 +177,11 @@ export default Mixin.create({
 
     const addCamera = (device, hasBrowserLabel) => {
       if (!hasBrowserLabel) {
+        if (device.deviceId && device.deviceId.toLowerCase() === 'default') {
+          device.label = this.lookup('webrtcDevices.default').toString();
+        } else if (device.deviceId && device.deviceId.toLowerCase().indexOf('communication') === 0) {
+          device.label = this.lookup('webrtcDevices.windowsCommunication').toString();
+        }
         device.label = device.label || this.lookup('webrtcDevices.cameraLabel', {number: ++cameraCount}).toString();
       }
       this.set('hasCameraPermission', this.get('hasCameraPermission') || hasBrowserLabel);
@@ -184,6 +189,11 @@ export default Mixin.create({
     };
     const addMicrophone = (device, hasBrowserLabel) => {
       if (!hasBrowserLabel) {
+        if (device.deviceId && device.deviceId.toLowerCase() === 'default') {
+          device.label = this.lookup('webrtcDevices.default').toString();
+        } else if (device.deviceId && device.deviceId.toLowerCase().indexOf('communication') === 0) {
+          device.label = this.lookup('webrtcDevices.windowsCommunication').toString();
+        }
         device.label = device.label || this.lookup('webrtcDevices.microphoneLabel', {number: ++microphoneCount}).toString();
       }
       this.set('hasMicPermission', this.get('hasMicPermission') || hasBrowserLabel);
