@@ -3,6 +3,8 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
+import wait from 'ember-test-helpers/wait';
 
 const tHelper = Ember.Helper.extend({
   compute: (params) => params[0]
@@ -321,4 +323,36 @@ test('it should change outputDevice', function (assert) {
       assert.equal(this.get('outputDevice'), mockDevices[1]);
     });
   });
+});
+
+test('playTestSound | should not set the output device if there was not one provided', function (assert) {
+  const webrtc = this.get('webrtc');
+  this.set('outputDevice', null);
+  this.renderDefault();
+  sinon.stub(webrtc, 'setOutputDevice').returns(Ember.RSVP.resolve());
+  this.$('.play-sound-btn').click();
+  return wait()
+    .then(() => {
+      sinon.assert.notCalled(webrtc.setOutputDevice);
+      assert.expect(0);
+    });
+});
+
+test('playTestSound | should set the output device if there was one selected', function (assert) {
+  const webrtc = this.get('webrtc');
+  this.set('outputDevice', {});
+  this.renderDefault();
+  sinon.stub(webrtc, 'setOutputDevice').returns(Ember.RSVP.resolve());
+  this.$('.play-sound-btn').click();
+  return wait()
+    .then(() => {
+      const audio = this.$('audio');
+      if (audio.play) {
+        // the test can't run if audio.play is not available
+        sinon.assert.calledOnce(webrtc.setOutputDevice);
+        assert.expect(0);
+      } else {
+        assert.ok('unsupported browser for test');
+      }
+    });
 });
