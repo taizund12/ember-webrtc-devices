@@ -214,6 +214,10 @@ export default Mixin.create({
       addCamera(defaultDevice, false);
     }
     return window.navigator.mediaDevices.enumerateDevices().then((devices) => {
+      Ember.Logger.log({
+        message: 'webrtcDevices enumerated',
+        devices
+      });
       if (IS_FIREFOX && BROWSER_VERSION < 42) {
         this.set('canListDevices', false);
         addMicrophone(defaultDevice);
@@ -260,9 +264,10 @@ export default Mixin.create({
       return RSVP.Promise.reject('Cannot set null device');
     }
 
-    const outputDevice = this.get('outputDeviceList').findBy('deviceId', device.deviceId);
+    const outputDevices = this.get('outputDeviceList');
+    const outputDevice = outputDevices.findBy('deviceId', device.deviceId);
     if (!outputDevice) {
-      return RSVP.Promise.reject('Cannot set output device: device not found');
+      return RSVP.Promise.reject(new Error('Cannot set output device: device not found'));
     }
 
     if (typeof el.setSinkId !== 'undefined') {
@@ -275,7 +280,14 @@ export default Mixin.create({
       }).then(function () {
         el.setSinkId(device.deviceId);
       }).then(() => {
-        Ember.Logger.log('successfully set audio output device');
+        Ember.Logger.log({
+          message: 'webrtcDevices outputDevice set',
+          device: {
+            deviceId: device.deviceId,
+            label: device.label
+          },
+          outputDevices: outputDevices.map(d => ({ deviceId: d.deviceId, label: device.label }))
+        });
       }).catch((err) => {
         Ember.Logger.error('failed to set audio output device', err);
       });
