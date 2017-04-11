@@ -23,6 +23,7 @@
         "microphoneLabel": "마이크 {number}",
         "outputDeviceLabel": "스피커 {number}",
         "outputDeviceSystemDefault": "시스템 기본값",
-        "default": "기본값"
+        "default": "기본값",
+        "windowsCommunication": "Windows 커뮤니케이션 장치"
     }
 }

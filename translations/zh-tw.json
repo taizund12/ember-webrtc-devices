@@ -23,6 +23,7 @@
         "microphoneLabel": "麥克風 {number}",
         "outputDeviceLabel": "揚聲器 {number}",
         "outputDeviceSystemDefault": "系統預設值",
-        "default": "預設"
+        "default": "預設",
+        "windowsCommunication": "Windows 通訊裝置"
     }
 }
