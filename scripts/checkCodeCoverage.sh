@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./node_modules/.bin/istanbul check-coverage --statements 41 --branches 27 coverage/coverage-final.json
+./node_modules/.bin/istanbul check-coverage --statements 70 --branches 59 coverage/coverage-final.json
