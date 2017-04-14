@@ -56,6 +56,16 @@ test('enumerateResolutions should return back a list of resolutions', assert => 
   assert.ok(resolutions.length);
 });
 
+test('enumerateResolutions | running multiple times should not increase array size', assert => {
+  subject.set('fullHd', true);
+  subject.enumerateResolutions();
+  const count = subject.get('resolutionsList.length');
+
+  subject.enumerateResolutions();
+  const count2 = subject.get('resolutionsList.length');
+  assert.equal(count, count2);
+});
+
 const MediaDevices = Ember.Object.extend(Ember.Evented, {
   enumerateDevices: () => Ember.RSVP.resolve()
 });

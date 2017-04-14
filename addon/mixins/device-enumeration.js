@@ -100,7 +100,7 @@ export default Mixin.create({
   },
 
   enumerateResolutions () {
-    const resolutions = this.get('resolutionList');
+    const resolutions = Ember.A();
     resolutions.pushObject(Ember.Object.create({
       label: this.lookup('webrtcDevices.resolutions.low').toString(),
       presetId: 1,
@@ -156,6 +156,8 @@ export default Mixin.create({
         }
       }));
     }
+
+    this.set('resolutionList', resolutions);
     return resolutions;
   },
 
