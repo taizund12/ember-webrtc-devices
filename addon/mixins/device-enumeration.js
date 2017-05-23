@@ -256,8 +256,8 @@ export default Mixin.create({
       if (!this.get('isDestroyed') && !this.get('isDestroying')) {
         Ember.Logger.error(err);
         this.set('canListDevices', false);
+        addMicrophone(defaultDevice);
       }
-      addMicrophone(defaultDevice);
     });
   },
 
