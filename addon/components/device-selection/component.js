@@ -135,6 +135,7 @@ export default Component.extend(/* LoggerMixin, */{
 
     changeFilter (filter) {
       this.set('selectedFilter', filter);
+      this.get('webrtc').setFilter(filter);
     }
   }
 });
