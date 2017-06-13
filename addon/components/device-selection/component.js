@@ -39,7 +39,7 @@ export default Component.extend(/* LoggerMixin, */{
     run.scheduleOnce('afterRender', () => {
       if (this.get('video')) {
         cheet('i n s t a', () => {
-          this.set('advancedOptions', ['willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint', 'none']);
+          this.set('advancedOptions', ['none', 'willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint']);
         });
       }
     });
