@@ -27,3 +27,4 @@ testem.log
 /.vscode
 .idea
 .DS_Store
+yarn.lock
