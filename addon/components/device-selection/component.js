@@ -43,7 +43,7 @@ export default Component.extend(/* LoggerMixin, */{
           this.set('advancedOptions', ['none', 'willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint']);
         });
         cheet('h a t s', () => {
-          this.set('hatOptions', ['none', 'hat1', 'hat2']);
+          this.set('hatOptions', ['none', 'fedora', 'santa', 'tiara', 'sombrero', 'turban', 'cat']);
         });
       }
     });
