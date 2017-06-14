@@ -45,6 +45,26 @@
                     </div>
                 </div>
             {{/if}}
+            {{#if hatOptions}}
+                <div class="entry-row">
+                    <div class="entry-label">
+                        <label for="{{concat elementId '-hat-select'}}">
+                            <i class="pc pc-picture"></i>
+                        </label>
+                    </div>
+                    <div class="entry-values">
+                        {{#x-select
+                           id=(concat elementId '-hat-select')
+                           value=selectedHat
+                           action="changeHat"
+                           class="form-control hat-select"}}
+                            {{#each hatOptions as |hat|}}
+                                {{#x-option value=hat}}{{hat}}{{/x-option}}
+                            {{/each}}
+                        {{/x-select}}
+                    </div>
+                </div>
+            {{/if}}
         {{/if}}
         {{#if (and webrtc.microphoneList.length audio)}}
             <div class="entry-row">

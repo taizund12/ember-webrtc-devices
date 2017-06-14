@@ -15,6 +15,7 @@ export default Component.extend(/* LoggerMixin, */{
   selectedResolution: null,
   selectedOutputDevice: null,
   selectedFilter: null,
+  selectedHat: null,
 
   audio: true,
   video: true,
@@ -41,6 +42,9 @@ export default Component.extend(/* LoggerMixin, */{
         cheet('i n s t a', () => {
           this.set('advancedOptions', ['none', 'willow', 'sutro', 'lofi', 'kelvin', 'inkwell', 'sepia', 'tint']);
         });
+        cheet('h a t s', () => {
+          this.set('hatOptions', ['none', 'hat1', 'hat2']);
+        });
       }
     });
   },
@@ -60,6 +64,9 @@ export default Component.extend(/* LoggerMixin, */{
     if (this.get('video')) {
       cheet.disable('i n s t a');
       this.set('advancedOptions', null);
+
+      cheet.disable('h a t s');
+      this.set('hatOptions', null);
     }
   },
 
@@ -136,6 +143,12 @@ export default Component.extend(/* LoggerMixin, */{
     changeFilter (filter) {
       this.set('selectedFilter', filter);
       this.get('webrtc').setFilter(filter);
+    },
+
+    changeHat (hat) {
+      this.set('selectedHat', hat);
+      this.get('webrtc').setHat(hat);
     }
+
   }
 });
