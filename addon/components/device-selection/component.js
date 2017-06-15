@@ -15,7 +15,7 @@ export default Component.extend(/* LoggerMixin, */{
   selectedResolution: null,
   selectedOutputDevice: null,
   selectedFilter: null,
-  selectedHat: null,
+  selectedHat: 'none',
 
   audio: true,
   video: true,
