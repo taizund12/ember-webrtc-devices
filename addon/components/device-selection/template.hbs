@@ -39,7 +39,7 @@
                            action="changeFilter"
                            class="form-control filter-select"}}
                             {{#each advancedOptions as |filter|}}
-                                {{#x-option value=filter}}{{filter}}{{/x-option}}
+                                {{#x-option value=filter}}{{capitalize-first filter}}{{/x-option}}
                             {{/each}}
                         {{/x-select}}
                     </div>
@@ -49,7 +49,7 @@
                 <div class="entry-row">
                     <div class="entry-label">
                         <label for="{{concat elementId '-hat-select'}}">
-                            <i class="pc pc-picture"></i>
+                            <i class="pc pc-graduation-cap"></i>
                         </label>
                     </div>
                     <div class="entry-values">
@@ -59,7 +59,7 @@
                            action="changeHat"
                            class="form-control hat-select"}}
                             {{#each hatOptions as |hat|}}
-                                {{#x-option value=hat}}{{hat}}{{/x-option}}
+                                {{#x-option value=hat}}{{capitalize-first hat}}{{/x-option}}
                             {{/each}}
                         {{/x-select}}
                     </div>
